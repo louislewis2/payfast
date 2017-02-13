@@ -8,9 +8,14 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{377B013C-3414-400A-B3F5-45766207AD7A}"
 	ProjectSection(SolutionItems) = preProject
 		global.json = global.json
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PayFast", "src\PayFast\PayFast.xproj", "{86DC7F57-53DB-4A11-A9FD-00394BEA9856}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{2CCC2D7B-A925-4B60-8FF5-075F682E03B0}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PayFast.UnitTests", "test\PayFast.UnitTests\PayFast.UnitTests.xproj", "{B535F321-441E-4073-9C21-EEFF65CADE55}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,11 +27,16 @@ Global
 		{86DC7F57-53DB-4A11-A9FD-00394BEA9856}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86DC7F57-53DB-4A11-A9FD-00394BEA9856}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86DC7F57-53DB-4A11-A9FD-00394BEA9856}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B535F321-441E-4073-9C21-EEFF65CADE55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B535F321-441E-4073-9C21-EEFF65CADE55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B535F321-441E-4073-9C21-EEFF65CADE55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B535F321-441E-4073-9C21-EEFF65CADE55}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{86DC7F57-53DB-4A11-A9FD-00394BEA9856} = {63AA742E-48C8-4644-9E3E-4E39C10E3BF7}
+		{B535F321-441E-4073-9C21-EEFF65CADE55} = {2CCC2D7B-A925-4B60-8FF5-075F682E03B0}
 	EndGlobalSection
 EndGlobal

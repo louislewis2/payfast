@@ -1,13 +1,25 @@
-﻿{
-  "version": "1.0.0-*",
+{
+  "version": "0.1.0-alpha1-*",
+  "description": "PayFast Integration Library",
+  "authors": [ "Louis Lewis" ],
+  "packOptions": {
+    "tags": [
+      "PayFast",
+      "PayFast Integration"
+    ]
+  },
 
   "dependencies": {
-    "NETStandard.Library": "1.6.0"
+    "NETStandard.Library": "1.6.1"
   },
 
   "frameworks": {
     "netstandard1.6": {
-      "imports": "dnxcore50"
+      "imports": "dnxcore50",
+      "dependencies": {
+        "System.Collections.Specialized": "4.3.0",
+        "System.Reflection.TypeExtensions": "4.3.0"
+      }
     }
   }
 }
