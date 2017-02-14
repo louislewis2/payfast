@@ -6,6 +6,33 @@ The classes make it simple to perform both creating the url for the comfirm page
 also known as the GET string. The other class is for the return variables for the itn process.
 It supports using the passphrase system.
 
+# Packages
+
+## MyGet Feed
+
+A public MyGet feed exists where the latest builds can be downloaded.
+In order to use this, you will need to add this feed to Visual Studio.
+
+Package Name: 
+
+> PayFast
+
+### Visual Studio 2015 url
+
+> ```https://www.myget.org/F/payfast/api/v3/index.json```
+
+### Visual Studio 2012+ url
+
+> ```https://www.myget.org/F/payfast/api/v2```
+
+### Adding Custom Feeds
+
+For a how to guide click [This Link](https://docs.microsoft.com/en-us/nuget/hosting-packages/overview)
+
+## Nuget Feed
+
+Coming Soon...
+
 # Samples
 
 Samples can be found in the samples directory on disk, or in the samples solution folder in VS.
