@@ -19,11 +19,11 @@ Package Name:
 
 ### Visual Studio 2015 url
 
-> ```https://www.myget.org/F/payfast/api/v3/index.json```
+> https://www.myget.org/F/payfast/api/v3/index.json
 
 ### Visual Studio 2012+ url
 
-> ```https://www.myget.org/F/payfast/api/v2```
+> https://www.myget.org/F/payfast/api/v2
 
 ### Adding Custom Feeds
 
