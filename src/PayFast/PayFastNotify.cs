@@ -202,6 +202,15 @@
 
                 var value = nameValueCollection[key];
 
+                if (key == nameof(this.billing_date) && string.IsNullOrEmpty(value))
+                {
+                    continue;
+                }
+                if (key == nameof(this.token) && string.IsNullOrEmpty(value))
+                {
+                    continue;
+                }
+
                 if (string.IsNullOrWhiteSpace(passPhrase) && key == lastEntryKey)
                 {
                     stringBuilder.Append($"{key}={this.UrlEncode(value)}");

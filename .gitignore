@@ -240,3 +240,8 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+
+**/wwwroot/lib/**/*
+**/wwwroot/_references.js
+**/wwwroot/css/*.min.css
+**/wwwroot/js/*.min.js

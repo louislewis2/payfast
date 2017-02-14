@@ -242,7 +242,14 @@
 
             var securityHash = this.CreateHash(stringBuilder);
 
-            stringBuilder.Append($"signature={this.UrlEncode(securityHash)}");
+            if(string.IsNullOrWhiteSpace(this.passPhrase) && !stringBuilder.ToString().EndsWith("&"))
+            {
+                stringBuilder.Append($"&signature={this.UrlEncode(securityHash)}");
+            }
+            else
+            {
+                stringBuilder.Append($"signature={this.UrlEncode(securityHash)}");
+            }
 
             return stringBuilder.ToString();
         }

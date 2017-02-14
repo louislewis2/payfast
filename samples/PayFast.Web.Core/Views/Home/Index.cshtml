@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2>Purchase</h2>
+            <br />
+            <p>
+                Pick one of the two available items below to make a purchase
+                <br />
+            </p>
+            <br />
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="col-md-4 col-md-offset-1">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Recurring 1</h3>
+                </div>
+
+                <div class="panel-body">
+                    <p><h5>Only R20 pm</h5></p>
+                    <p>This is for recurring billing</p>
+                </div>
+                <div class="text-right">
+                    <a asp-action="Recurring" class="btn btn-block btn-success">Buy Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-md-offset-1">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Payment 1</h3>
+                </div>
+
+                <div class="panel-body">
+                    <p><h5>Only R30 once off</h5></p>
+                    <p>This is a once off payment</p>
+                </div>
+                <div class="text-right">
+                    <a asp-action="OnceOff" class="btn btn-block btn-success">Buy Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
