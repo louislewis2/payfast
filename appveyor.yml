@@ -1,0 +1,28 @@
+version: '0.1.{build}'
+
+init:
+- ps: $Env:LABEL = "CI" + $Env:APPVEYOR_BUILD_NUMBER.PadLeft(5, "0")
+configuration:
+- Release
+- Debug
+platform: Any CPU
+environment:
+  DOTNET_CLI_TELEMETRY_OPTOUT: 1
+before_build:
+- appveyor-retry dotnet restore -v Minimal
+build_script:
+- dotnet build "src\PayFast" -c %CONFIGURATION% --no-dependencies --version-suffix %LABEL%
+after_build:
+- dotnet pack "src\PayFast" -c %CONFIGURATION% --no-build --version-suffix %LABEL% -o .\artifacts
+test_script:
+- dotnet test "test\PayFast.UnitTests" -c %CONFIGURATION%
+pull_requests:  
+  do_not_increment_build_number: true
+branches:  
+  only:
+  - sample
+nuget:  
+  disable_publish_on_pr: true
+artifacts:  
+- path: .\artifacts\**\*.nupkg
+  name: NuGet
