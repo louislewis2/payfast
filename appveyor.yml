@@ -4,7 +4,6 @@ init:
 - ps: $Env:LABEL = "CI" + $Env:APPVEYOR_BUILD_NUMBER.PadLeft(5, "0")
 configuration:
 - Release
-- Debug
 platform: Any CPU
 environment:
   DOTNET_CLI_TELEMETRY_OPTOUT: 1
@@ -20,7 +19,7 @@ pull_requests:
   do_not_increment_build_number: true
 branches:  
   only:
-  - sample
+  - dev
 nuget:  
   disable_publish_on_pr: true
 artifacts:  
