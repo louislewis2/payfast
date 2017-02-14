@@ -25,3 +25,11 @@ nuget:
 artifacts:  
 - path: .\artifacts\**\*.nupkg
   name: NuGet
+deploy:  
+- provider: NuGet
+  server: https://www.myget.org/F/payfast/api/v2/package
+  api_key:
+    secure: kVGrfaSlHgz+m+0UiUI3Y7AcEk2FnjQzBu1h/y82hf/hRyPIVE0tgqhvb0RAZCBL
+  skip_symbols: true
+  on:
+    branch: master
