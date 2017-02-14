@@ -33,3 +33,14 @@ deploy:
   skip_symbols: true
   on:
     branch: master
+- provider: NuGet
+  server: https://www.nuget.org/api/v2/package
+  api_key:
+    secure: 1afzvhhfr/tnKB9eqIj5MvLUBJq48BPazJGRLwkkfFfIPs06DL9RdAXfNli+bXhs
+  skip_symbols: true
+  on:
+    branch: master
+    # Only publish if the trigger was a Git tag
+    # git tag v1.0.0-alpha
+    # git push origin --tags
+    appveyor_repo_tag: true
