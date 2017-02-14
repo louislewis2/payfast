@@ -1,12 +1,18 @@
 {
-  "version": "0.1.0-alpha1-*",
+  "version": "1.0.0-alpha-*",
   "description": "PayFast Integration Library",
   "authors": [ "Louis Lewis" ],
   "packOptions": {
     "tags": [
       "PayFast",
       "PayFast Integration"
-    ]
+    ],
+    "licenseUrl": "https://github.com/louislewis2/payfast/blob/master/License.md",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/louislewis2/payfast"
+    },
+    "owners": [ "Louis Lewis" ]
   },
 
   "dependencies": {

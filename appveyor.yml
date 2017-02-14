@@ -1,7 +1,7 @@
-version: '0.1.{build}'
+version: '1.0.0.-alpha-{build}'
 
 init:
-- ps: $Env:LABEL = "CI" + $Env:APPVEYOR_BUILD_NUMBER.PadLeft(5, "0")
+- ps: $Env:LABEL = $Env:APPVEYOR_BUILD_NUMBER
 configuration:
 - Release
 platform: Any CPU
