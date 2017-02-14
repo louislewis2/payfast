@@ -1,4 +1,4 @@
-# PayFast
+# PayFast ![Build status](https://ci.appveyor.com/api/projects/status/lwdyj3euxncw8aap?svg=true)
 
 This is a .Net library facilitates working with the PayFast api.
 It provides classes for both the request and notify urls.
@@ -31,7 +31,9 @@ For a how to guide click [This Link](https://docs.microsoft.com/en-us/nuget/host
 
 ## Nuget Feed
 
-Coming Soon...
+[Nuget Link](https://www.nuget.org/packages/PayFast/)
+
+> Install-Package PayFast -Pre
 
 # Samples
 
@@ -54,5 +56,3 @@ start the project, then close stop debugging and then make the change and then t
 
 Make sure to look at appsettings.json, that is where you will configure all your PayFast related settings,
 which will allow the sample to work correctly.
-
-![Build status](https://ci.appveyor.com/api/projects/status/lwdyj3euxncw8aap?svg=true)
