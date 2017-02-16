@@ -11,10 +11,10 @@ before_build:
 - appveyor-retry dotnet restore -v Minimal
 build_script:
 - dotnet build "src\PayFast" -c %CONFIGURATION% --no-dependencies --version-suffix %LABEL%
-- dotnet build "src\samples\PayFast.Web.Core" -c %CONFIGURATION% --framework netcoreapp1.0 --version-suffix %LABEL%
+- dotnet build "samples\PayFast.Web.Core" -c %CONFIGURATION% --framework netcoreapp1.0 --version-suffix %LABEL%
 after_build:
 - dotnet pack "src\PayFast" -c %CONFIGURATION% --no-build --version-suffix %LABEL% -o .\artifacts
-- dotnet publish "src\samples\PayFast.Web.Core" -c %CONFIGURATION% --no-build --framework netcoreapp1.0 -o %appveyor_build_folder%\publish
+- dotnet publish "samples\PayFast.Web.Core" -c %CONFIGURATION% --no-build --framework netcoreapp1.0 -o %appveyor_build_folder%\publish
 test_script:
 - dotnet test "test\PayFast.UnitTests" -c %CONFIGURATION%
 pull_requests:  
