@@ -54,9 +54,9 @@ deploy:
   server: https://payfast-demo.scm.azurewebsites.net:443/msdeploy.axd?site=payfast-demo 
   website: payfast-demo 
   username: 
-    secure: UtwWSnKfFRQc7x3CjXHrnA==
+    secure: Owc6J88/+N9penxM0C75enA8PlbPEBZFTxMSZIdpX+o=
   password: 
-    secure: C6Rs8RqbFe5cl2hYSlC8kQ==
+    secure: zMrfSkLf4Gect1/j5+iW/g==
   artifact: PayFast.Web.Core
   aspnet_core: true 
   aspnet_core_force_restart: false 
