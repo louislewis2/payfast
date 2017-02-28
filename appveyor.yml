@@ -35,14 +35,14 @@ deploy:
 - provider: NuGet
   server: https://www.myget.org/F/payfast/api/v2/package
   api_key:
-    secure: kVGrfaSlHgz+m+0UiUI3Y7AcEk2FnjQzBu1h/y82hf/hRyPIVE0tgqhvb0RAZCBL
+    secure: JYpM/OrXvGM8mBAxZC9OXJHc5WnGp/guKfOIBo2d5kwbAW5rgyi+Rztc6779P2Ci
   skip_symbols: true
   on:
     branch: master
 - provider: NuGet
   server: https://www.nuget.org/api/v2/package
   api_key:
-    secure: 1afzvhhfr/tnKB9eqIj5MvLUBJq48BPazJGRLwkkfFfIPs06DL9RdAXfNli+bXhs
+    secure: essuPbdKcsGAtNrmWRObRklWuZ+fznMxOPPLyxe8RHEBTwlrBqUKNd40krHV4GOz
   skip_symbols: true
   on:
     branch: master
