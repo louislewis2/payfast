@@ -4,9 +4,28 @@ This is a .Net library facilitates working with the PayFast api.
 It provides classes for both the request and notify urls.
 The classes make it simple to perform both creating the url for the comfirm page,
 also known as the GET string. The other class is for the return variables for the itn process.
-It supports using the passphrase system.
+It supports using the passphrase system. It also handles generating the signature for requests.
+
+# Supported Request Types
+
+* Once Off Payment
+* Recurring Billing
+* AdHoc Agreements
+
+# Support Post Type
+
+* ITN Callback post from PayFast
 
 # Packages
+
+## Nuget Feed
+
+[Nuget Link](https://www.nuget.org/packages/PayFast/)
+
+> Install-Package PayFast -Pre
+
+The library is currently undergoing a quality control process, once it passes this process
+the pre-release flag will be removed.
 
 ## MyGet Feed
 
@@ -28,12 +47,6 @@ Package Name:
 ### Adding Custom Feeds
 
 For a how to guide click [This Link](https://docs.microsoft.com/en-us/nuget/hosting-packages/overview)
-
-## Nuget Feed
-
-[Nuget Link](https://www.nuget.org/packages/PayFast/)
-
-> Install-Package PayFast -Pre
 
 # Samples
 

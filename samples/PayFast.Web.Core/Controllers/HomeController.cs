@@ -96,6 +96,37 @@
             return Redirect(redirectUrl);
         }
 
+        public IActionResult AdHoc()
+        {
+            var adHocRequest = new PayFastRequest(this.payFastSettings.PassPhrase);
+            // Merchant Details
+            adHocRequest.merchant_id = this.payFastSettings.MerchantId;
+            adHocRequest.merchant_key = this.payFastSettings.MerchantKey;
+            adHocRequest.return_url = this.payFastSettings.ReturnUrl;
+            adHocRequest.cancel_url = this.payFastSettings.CancelUrl;
+            adHocRequest.notify_url = this.payFastSettings.NotifyUrl;
+
+            // Buyer Details
+            adHocRequest.email_address = "sbtu01@payfast.co.za";
+
+            // Transaction Details
+            adHocRequest.m_payment_id = "8d00bf49-e979-4004-228c-08d452b86380";
+            adHocRequest.amount = 70;
+            adHocRequest.item_name = "Adhoc Agreement";
+            adHocRequest.item_description = "Some details about the adhoc agreement";
+
+            // Transaction Options
+            adHocRequest.email_confirmation = true;
+            adHocRequest.confirmation_address = "sbtu01@payfast.co.za";
+
+            // Recurring Billing Details
+            adHocRequest.subscription_type = SubscriptionType.AdHoc;
+
+            var redirectUrl = $"{this.payFastSettings.ProcessUrl}{adHocRequest.ToString()}";
+
+            return Redirect(redirectUrl);
+        }
+
         public IActionResult Return()
         {
             return View();
