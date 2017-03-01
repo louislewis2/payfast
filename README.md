@@ -1,4 +1,4 @@
-# PayFast ![Build status](https://ci.appveyor.com/api/projects/status/lwdyj3euxncw8aap?svg=true)
+# PayFast [![Build status](https://ci.appveyor.com/api/projects/status/0m01brynop7cxjj1/branch/master?svg=true)](https://ci.appveyor.com/project/e3PTeam/payfast/branch/master)
 
 This is a .Net library facilitates working with the PayFast api.
 It provides classes for both the request and notify urls.
