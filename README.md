@@ -22,10 +22,7 @@ It supports using the passphrase system. It also handles generating the signatur
 
 [Nuget Link](https://www.nuget.org/packages/PayFast/)
 
-> Install-Package PayFast -Pre
-
-The library is currently undergoing a quality control process, once it passes this process
-the pre-release flag will be removed.
+> Install-Package PayFast
 
 ## MyGet Feed
 
