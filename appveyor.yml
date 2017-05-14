@@ -17,7 +17,7 @@ after_build:
 - dotnet pack "src\PayFast" -c %CONFIGURATION% --no-build --version-suffix %LABEL% -o .\artifacts
 - dotnet publish "samples\PayFast.Web.Core" -c %CONFIGURATION% --no-build --framework netcoreapp1.0 -o %appveyor_build_folder%\publish
 test_script:
-- dotnet test "test\PayFast.UnitTests" -c %CONFIGURATION%
+- dotnet test "test\PayFast.UnitTests\PayFast.UnitTests.csproj" -c %CONFIGURATION%
 pull_requests:  
   do_not_increment_build_number: true
 branches:  
