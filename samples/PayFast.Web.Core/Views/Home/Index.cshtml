@@ -3,22 +3,24 @@
 }
 
 <div class="container">
+    <div class="bg hidden-sm"></div>
     <div class="row">
         <div class="col-md-12 text-center">
-            <h2>Purchase</h2>
+            <h2>Purchase Samples</h2>
             <br />
             <p>
                 Pick one of the three available items below to make a purchase
                 <br />
+                (The "Server Source Code" links will open the code for the option from the current source code)
             </p>
             <br />
         </div>
     </div>
-    <div class="col-md-12">
+    <div class="row">
         <div class="col-md-4">
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Recurring 1</h3>
+                    <h3 class="panel-title">Recurring Billing</h3>
                 </div>
 
                 <div class="panel-body">
@@ -27,13 +29,14 @@
                 </div>
                 <div class="text-right">
                     <a asp-action="Recurring" class="btn btn-block btn-success">Buy Now</a>
+                    <a target="_blank" href="https://github.com/louislewis2/payfast/blob/master/samples/PayFast.Web.Core/Controllers/HomeController.cs#L36-L68" class="btn btn-block btn-info">Server Source Code</a>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Payment 1</h3>
+                    <h3 class="panel-title">Once-Off Payment</h3>
                 </div>
 
                 <div class="panel-body">
@@ -42,23 +45,37 @@
                 </div>
                 <div class="text-right">
                     <a asp-action="OnceOff" class="btn btn-block btn-success">Buy Now</a>
+                    <a target="_blank" href="https://github.com/louislewis2/payfast/blob/master/samples/PayFast.Web.Core/Controllers/HomeController.cs#L71-L96" class="btn btn-block btn-info">Server Source Code</a>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <h3 class="panel-title">AdHoc</h3>
+                    <h3 class="panel-title">AdHoc Agreement</h3>
                 </div>
 
                 <div class="panel-body">
                     <p><h5>Only R70 once off with adhoc</h5></p>
-                    <p>This is a adhoc agreement</p>
+                    <p>This is an adhoc agreement</p>
                 </div>
                 <div class="text-right">
                     <a asp-action="AdHoc" class="btn btn-block btn-success">Buy Now</a>
+                    <a target="_blank" href="https://github.com/louislewis2/payfast/blob/master/samples/PayFast.Web.Core/Controllers/HomeController.cs#L99-L127" class="btn btn-block btn-info">Server Source Code</a>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4 text-center">
+            <h2>Postback (ITN) Handling</h2>
+            <br />
+            <p>
+                View sample code for handling the postback (ITN)
+                <br />
+            </p>
+            <br />
+            <a target="_blank" href="https://github.com/louislewis2/payfast/blob/master/samples/PayFast.Web.Core/Controllers/HomeController.cs#L140-L151" class="btn btn-block btn-info">Server Source Code</a>
         </div>
     </div>
 </div>

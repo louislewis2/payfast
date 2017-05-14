@@ -1,9 +1,9 @@
 # PayFast [![Build status](https://ci.appveyor.com/api/projects/status/0m01brynop7cxjj1/branch/master?svg=true)](https://ci.appveyor.com/project/e3PTeam/payfast/branch/master)
 
-This is a .Net library facilitates working with the PayFast api.
-It provides classes for both the request and notify urls.
-The classes make it simple to perform both creating the url for the comfirm page,
-also known as the GET string. The other class is for the return variables for the itn process.
+This .Net library facilitates working with the PayFast api.
+It provides classes for handling both the request and notify urls.
+The PayFastRequest class makes it simple to create the url for the confirm page,
+also known as the GET string. The PayFastNotify class is for handling return variables for the itn process.
 It supports using the passphrase system. It also handles generating the signature for requests.
 
 # Supported Request Types
