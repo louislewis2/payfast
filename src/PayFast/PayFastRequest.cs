@@ -2,6 +2,7 @@
 {
     using System;
     using System.Text;
+    using System.Collections.Specialized;
 
     public class PayFastRequest : PayFastBase
     {
@@ -263,7 +264,7 @@
             var stringBuilder = new StringBuilder();
             var nameValueCollection = this.GetNameValueCollection();
 
-            var lastEntryKey = nameValueCollection.GetKey(nameValueCollection.Count - 1);
+            var lastEntryKey = this.DetermineLast(nameValueCollection);
 
             foreach (string key in nameValueCollection)
             {
@@ -285,6 +286,27 @@
             }
 
             return stringBuilder;
+        }
+
+        private string DetermineLast(NameValueCollection nameValueCollection)
+        {
+            string lastKey = nameValueCollection.GetKey(nameValueCollection.Count - 1);
+
+            foreach(string key in nameValueCollection)
+            {
+                var value = nameValueCollection[key];
+
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    continue;
+                }
+                else
+                {
+                    lastKey = key;
+                }
+            }
+
+            return lastKey;
         }
 
         #endregion Private Methods

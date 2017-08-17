@@ -1,6 +1,7 @@
 ﻿namespace PayFast
 {
     using System.Text;
+    using System.Collections.Specialized;
 
     public class PayFastNotify : PayFastBase
     {
@@ -191,7 +192,7 @@
             var stringBuilder = new StringBuilder();
             var nameValueCollection = this.GetNameValueCollection();
 
-            var lastEntryKey = nameValueCollection.GetKey(nameValueCollection.Count - 2);
+            var lastEntryKey = this.DetermineLast(nameValueCollection);
 
             foreach (string key in nameValueCollection)
             {
@@ -229,6 +230,40 @@
             var securityHash = this.GetCalculatedSignature();
 
             return this.signature == securityHash;
+        }
+
+        private string DetermineLast(NameValueCollection nameValueCollection)
+        {
+            string lastKey = nameValueCollection.GetKey(nameValueCollection.Count - 2);
+
+            foreach (string key in nameValueCollection)
+            {
+                if (key == nameof(this.signature))
+                {
+                    continue;
+                }
+
+                var value = nameValueCollection[key];
+
+                if (key == nameof(this.billing_date) && string.IsNullOrEmpty(value))
+                {
+                    continue;
+                }
+
+                if (key == nameof(this.token) && string.IsNullOrEmpty(value))
+                {
+                    continue;
+                }
+
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    continue;
+                }
+
+                lastKey = key;
+            }
+
+            return lastKey;
         }
 
         #endregion Methods

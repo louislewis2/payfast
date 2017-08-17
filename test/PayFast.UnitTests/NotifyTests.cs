@@ -5,7 +5,7 @@
     public class NotifyTests
     {
         [Fact]
-        public void Can_Verify_Signature()
+        public void Can_Verify_Signature_With_Passphrase()
         {
             // Arrange
             var passPhrase = "salt";
@@ -26,6 +26,32 @@
             notifyViewModel.pf_payment_id = "327767";
             notifyViewModel.signature = "c5cce9e08316373ca2ba6b427e39772e";
             notifyViewModel.token = "01c3f68f-5802-4760-c0a5-85d658ccff99";
+
+            // Act
+            var calculatedSignature = notifyViewModel.GetCalculatedSignature();
+
+            // Assert
+            Assert.Equal(notifyViewModel.signature, calculatedSignature);
+        }
+
+        [Fact]
+        public void Can_Verify_Signature_Without_Passphrase()
+        {
+            // Arrange
+            var notifyViewModel = new PayFastNotify();
+            notifyViewModel.amount_fee = "-2.28";
+            notifyViewModel.amount_gross = "30.00";
+            notifyViewModel.amount_net = "27.72";
+            notifyViewModel.email_address = "sbtu01@payfast.co.za";
+            notifyViewModel.item_description = "Some details about the once off payment";
+            notifyViewModel.item_name = "Once off option";
+            notifyViewModel.m_payment_id = "8d00bf49-e979-4004-228c-08d452b86380";
+            notifyViewModel.merchant_id = "10004241";
+            notifyViewModel.name_first = "Test";
+            notifyViewModel.name_last = "User 01";
+            notifyViewModel.payment_status = "COMPLETE";
+            notifyViewModel.pf_payment_id = "392624";
+            notifyViewModel.signature = "a8a4d344281414843db03880265e3d94";
 
             // Act
             var calculatedSignature = notifyViewModel.GetCalculatedSignature();

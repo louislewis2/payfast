@@ -3,9 +3,9 @@
     using System;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
+    using Microsoft.Extensions.Logging;
 
     using Models;
-    using Microsoft.Extensions.Logging;
 
     public class HomeController : Controller
     {
