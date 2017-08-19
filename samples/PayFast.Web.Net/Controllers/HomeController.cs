@@ -1,40 +1,44 @@
-﻿namespace PayFast.Web.Core.Controllers
+﻿namespace PayFast.Web.Net.Controllers
 {
     using System;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Extensions.Options;
-    using Microsoft.Extensions.Logging;
+    using System.Net;
+    using System.Web.Mvc;
+    using System.Configuration;
 
-    using Models;
-    using PayFast.Web.Core.ModelBinders;
+    using PayFast.Web.Net.Models;
+    using PayFast.Web.Net.ModelBinders;
 
     public class HomeController : Controller
     {
         #region Fields
 
         private readonly PayFastSettings payFastSettings;
-        private readonly ILogger logger;
 
         #endregion Fields
 
         #region Constructor
 
-        public HomeController(IOptions<PayFastSettings> payFastSettings, ILogger<HomeController> logger)
+        public HomeController()
         {
-            this.payFastSettings = payFastSettings.Value;
-            this.logger = logger;
+            this.payFastSettings = new PayFastSettings();
+            this.payFastSettings.MerchantId = ConfigurationManager.AppSettings["MerchantId"];
+            this.payFastSettings.MerchantKey = ConfigurationManager.AppSettings["MerchantKey"];
+            this.payFastSettings.PassPhrase = ConfigurationManager.AppSettings["PassPhrase"];
+            this.payFastSettings.ProcessUrl = ConfigurationManager.AppSettings["ProcessUrl"];
+            this.payFastSettings.ValidateUrl = ConfigurationManager.AppSettings["ValidateUrl"];
+            this.payFastSettings.ReturnUrl = ConfigurationManager.AppSettings["ReturnUrl"];
+            this.payFastSettings.CancelUrl = ConfigurationManager.AppSettings["CancelUrl"];
+            this.payFastSettings.NotifyUrl = ConfigurationManager.AppSettings["NotifyUrl"];
         }
 
         #endregion Constructor
 
-        #region Methods
-
-        public IActionResult Index()
+        public ActionResult Index()
         {
             return View();
         }
 
-        public IActionResult Recurring()
+        public ActionResult Recurring()
         {
             var recurringRequest = new PayFastRequest(this.payFastSettings.PassPhrase);
 
@@ -70,9 +74,10 @@
             return Redirect(redirectUrl);
         }
 
-        public IActionResult OnceOff()
+        public ActionResult OnceOff()
         {
             var onceOffRequest = new PayFastRequest(this.payFastSettings.PassPhrase);
+
             // Merchant Details
             onceOffRequest.merchant_id = this.payFastSettings.MerchantId;
             onceOffRequest.merchant_key = this.payFastSettings.MerchantKey;
@@ -98,9 +103,10 @@
             return Redirect(redirectUrl);
         }
 
-        public IActionResult AdHoc()
+        public ActionResult AdHoc()
         {
             var adHocRequest = new PayFastRequest(this.payFastSettings.PassPhrase);
+
             // Merchant Details
             adHocRequest.merchant_id = this.payFastSettings.MerchantId;
             adHocRequest.merchant_key = this.payFastSettings.MerchantKey;
@@ -129,18 +135,18 @@
             return Redirect(redirectUrl);
         }
 
-        public IActionResult Return()
+        public ActionResult Return()
         {
             return View();
         }
 
-        public IActionResult Cancel()
+        public ActionResult Cancel()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Notify([ModelBinder(BinderType = typeof(PayFastNotifyModelBinder))]PayFastNotify payFastNotifyViewModel)
+        public ActionResult Notify([ModelBinder(typeof(PayFastNotifyModelBinder))]PayFastNotify payFastNotifyViewModel)
         {
             payFastNotifyViewModel.SetPassPhrase(this.payFastSettings.PassPhrase);
 
@@ -148,16 +154,14 @@
 
             var isValid = payFastNotifyViewModel.signature == calculatedSignature;
 
-            this.logger.LogInformation($"Signature Validation Result: {isValid}");
+            System.Diagnostics.Debug.WriteLine($"Signature Validation Result: {isValid}");
 
-            return Ok();
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
 
-        public IActionResult Error()
+        public ActionResult Error()
         {
             return View();
         }
-
-        #endregion Methods
     }
 }
