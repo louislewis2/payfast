@@ -6,7 +6,7 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
 
-    using Models;
+    using PayFast;
 
     public class Startup
     {

@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\PayFast.AspNetCore\PayFast.AspNetCore.csproj" />
     <ProjectReference Include="..\..\src\PayFast\PayFast.csproj" />
   </ItemGroup>
 

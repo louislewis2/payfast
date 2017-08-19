@@ -5,8 +5,8 @@
     using Microsoft.Extensions.Options;
     using Microsoft.Extensions.Logging;
 
-    using Models;
-    using PayFast.Web.Core.ModelBinders;
+    using PayFast;
+    using PayFast.AspNetCore;
 
     public class HomeController : Controller
     {

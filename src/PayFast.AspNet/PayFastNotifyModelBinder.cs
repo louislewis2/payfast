@@ -1,4 +1,4 @@
-﻿namespace PayFast.Web.Net.ModelBinders
+﻿namespace PayFast.AspNet
 {
     using System;
     using System.Web.Mvc;

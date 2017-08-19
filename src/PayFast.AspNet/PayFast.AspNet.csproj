@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>PayFast Integration Library For Asp.Net</Description>
+    <VersionPrefix>1.0.0-alpha</VersionPrefix>
+    <Authors>Louis Lewis</Authors>
+    <AssemblyName>PayFast.AspNet</AssemblyName>
+    <PackageId>PayFast.AspNet</PackageId>
+    <PackageTags>PayFast;PayFast Integration; AspNet</PackageTags>
+    <PackageLicenseUrl>https://github.com/louislewis2/payfast/blob/master/License.md</PackageLicenseUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/louislewis2/payfast</RepositoryUrl>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+    <TargetFrameworks>net45;net451;net452;net46;</TargetFrameworks>
+  </PropertyGroup>
+
+    <ItemGroup>
+    <Reference Include="System.Web" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PayFast\PayFast.csproj" />
+  </ItemGroup>
+
+</Project>

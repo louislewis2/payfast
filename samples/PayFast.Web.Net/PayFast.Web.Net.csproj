@@ -146,8 +146,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="ModelBinders\PayFastNotifyModelBinder.cs" />
-    <Compile Include="Models\PayFastSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -206,6 +204,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\src\PayFast.AspNet\PayFast.AspNet.csproj">
+      <Project>{6100a896-8955-4e28-ac87-939216449340}</Project>
+      <Name>PayFast.AspNet</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\PayFast\PayFast.csproj">
       <Project>{86dc7f57-53db-4a11-a9fd-00394bea9856}</Project>
       <Name>PayFast</Name>

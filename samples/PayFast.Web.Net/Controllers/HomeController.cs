@@ -5,8 +5,8 @@
     using System.Web.Mvc;
     using System.Configuration;
 
-    using PayFast.Web.Net.Models;
-    using PayFast.Web.Net.ModelBinders;
+    using PayFast;
+    using PayFast.AspNet;
 
     public class HomeController : Controller
     {
@@ -32,6 +32,8 @@
         }
 
         #endregion Constructor
+
+        #region Methods
 
         public ActionResult Index()
         {
@@ -163,5 +165,7 @@
         {
             return View();
         }
+
+        #endregion Methods
     }
 }

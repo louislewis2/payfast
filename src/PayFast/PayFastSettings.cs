@@ -1,4 +1,4 @@
-﻿namespace PayFast.Web.Net.Models
+﻿namespace PayFast
 {
     public class PayFastSettings
     {

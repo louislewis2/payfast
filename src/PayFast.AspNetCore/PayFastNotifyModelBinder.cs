@@ -1,10 +1,9 @@
-﻿namespace PayFast.Web.Core.ModelBinders
+﻿namespace PayFast.AspNetCore
 {
     using System;
     using System.Threading.Tasks;
     using System.Collections.Generic;
     using Microsoft.Extensions.Primitives;
-    using Microsoft.AspNetCore.Mvc.Internal;
     using Microsoft.AspNetCore.Mvc.ModelBinding;
 
     public class PayFastNotifyModelBinder : IModelBinder
@@ -20,7 +19,7 @@
 
             if (formCollection == null || formCollection.Count < 1)
             {
-                return TaskCache.CompletedTask;
+                return Task.CompletedTask;
             }
 
             var properties = new Dictionary<string, string>();
@@ -39,7 +38,7 @@
 
             bindingContext.Result = ModelBindingResult.Success(model);
 
-            return TaskCache.CompletedTask;
+            return Task.CompletedTask;
         }
     }
 }
