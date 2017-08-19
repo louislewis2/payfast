@@ -4,6 +4,7 @@
     using System.Net;
     using System.Web.Mvc;
     using System.Configuration;
+    using System.Threading.Tasks;
 
     using PayFast;
     using PayFast.AspNet;
@@ -148,7 +149,7 @@
         }
 
         [HttpPost]
-        public ActionResult Notify([ModelBinder(typeof(PayFastNotifyModelBinder))]PayFastNotify payFastNotifyViewModel)
+        public async Task<ActionResult> Notify([ModelBinder(typeof(PayFastNotifyModelBinder))]PayFastNotify payFastNotifyViewModel)
         {
             payFastNotifyViewModel.SetPassPhrase(this.payFastSettings.PassPhrase);
 
@@ -157,6 +158,22 @@
             var isValid = payFastNotifyViewModel.signature == calculatedSignature;
 
             System.Diagnostics.Debug.WriteLine($"Signature Validation Result: {isValid}");
+
+            // The PayFast Validator is still under developement
+            // Its not recommended to rely on this for production use cases
+            var payfastValidator = new PayFastValidator(this.payFastSettings, payFastNotifyViewModel, IPAddress.Parse(this.HttpContext.Request.UserHostAddress));
+
+            var merchantIdValidationResult = payfastValidator.ValidateMerchantId();
+
+            System.Diagnostics.Debug.WriteLine($"Merchant Id Validation Result: {merchantIdValidationResult}");
+
+            var ipAddressValidationResult = payfastValidator.ValidateSourceIp();
+
+            System.Diagnostics.Debug.WriteLine($"Ip Address Validation Result: {merchantIdValidationResult}");
+
+            var dataValidationResult = await payfastValidator.ValidateData();
+
+            System.Diagnostics.Debug.WriteLine($"Data Validation Result: {dataValidationResult}");
 
             return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
