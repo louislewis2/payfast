@@ -14,6 +14,13 @@ The samples have been updated to showcase how they are used.
 
 Please be sure to use the correct package for the version of Asp.Net you are using.
 
+# Live Samples
+
+There are now two live samples
+
+* [Asp.Net](https://payfast-demo-mvc.azurewebsites.net)
+* [Asp.Net Core](https://payfast-demo.azurewebsites.net)
+
 # Supported Runtimes
 
 * .Net 4.5
@@ -62,6 +69,8 @@ Feel free to give it a try and get your feedback back to me.
 > Install-Package PayFast
 > Install-Package PayFast.AspNet
 > Install-Package PayFast.AspNetCore
+
+The latest version is 1.0.1. It is a pre-release, pending testing and feedback.
 
 # Samples
 
