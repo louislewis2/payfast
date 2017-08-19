@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <Description>PayFast Integration Library</Description>
-    <VersionPrefix>1.0.0-alpha</VersionPrefix>
+    <VersionPrefix>1.0.1-alpha</VersionPrefix>
     <Authors>Louis Lewis</Authors>
     <TargetFrameworks>net45;net451;net452;net46;net461;net462;netstandard1.6</TargetFrameworks>
     <AssemblyName>PayFast</AssemblyName>

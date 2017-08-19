@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <Description>PayFast Integration Library For Asp.Net Core</Description>
-    <VersionPrefix>1.0.0-alpha</VersionPrefix>
+    <VersionPrefix>1.0.1-alpha</VersionPrefix>
     <Authors>Louis Lewis</Authors>
     <AssemblyName>PayFast.AspNetCore</AssemblyName>
     <PackageId>PayFast.AspNetCore</PackageId>
