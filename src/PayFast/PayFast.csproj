@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <Description>PayFast Integration Library</Description>
-    <VersionPrefix>1.0.1-alpha</VersionPrefix>
+    <VersionPrefix>1.0.2-alpha</VersionPrefix>
     <Authors>Louis Lewis</Authors>
     <TargetFrameworks>net45;net451;net452;net46;net461;net462;netstandard1.6</TargetFrameworks>
     <AssemblyName>PayFast</AssemblyName>
@@ -16,6 +16,8 @@
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <PackageReleaseNotes>Correct an issue with the validator class, causing it to return incorrect results</PackageReleaseNotes>
+    <PackageProjectUrl>https://github.com/louislewis2/payfast</PackageProjectUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(TargetFramework)' == 'net45'">

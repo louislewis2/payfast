@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <Description>PayFast Integration Library For Asp.Net</Description>
-    <VersionPrefix>1.0.1-alpha</VersionPrefix>
+    <VersionPrefix>1.0.2-alpha</VersionPrefix>
     <Authors>Louis Lewis</Authors>
     <AssemblyName>PayFast.AspNet</AssemblyName>
     <PackageId>PayFast.AspNet</PackageId>
@@ -12,6 +12,8 @@
     <RepositoryUrl>https://github.com/louislewis2/payfast</RepositoryUrl>
     <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
     <TargetFrameworks>net45;net451;net452;net46;</TargetFrameworks>
+    <PackageReleaseNotes>Correct an issue with the validator class, causing it to return incorrect results</PackageReleaseNotes>
+    <PackageProjectUrl>https://github.com/louislewis2/payfast</PackageProjectUrl>
   </PropertyGroup>
 
     <ItemGroup>

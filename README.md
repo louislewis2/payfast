@@ -67,10 +67,12 @@ Feel free to give it a try and get your feedback back to me.
 [ Payfast.AspNetCore Nuget Link](https://www.nuget.org/packages/PayFast.AspNetCore/)
 
 > Install-Package PayFast
+
 > Install-Package PayFast.AspNet
+
 > Install-Package PayFast.AspNetCore
 
-The latest version is 1.0.1. It is a pre-release, pending testing and feedback.
+The latest version is 1.0.2. It is a pre-release, pending testing and feedback.
 
 # Samples
 
