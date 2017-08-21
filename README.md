@@ -63,7 +63,9 @@ Feel free to give it a try and get your feedback back to me.
 ## Nuget Feed
 
 [ Payfast Nuget Link](https://www.nuget.org/packages/PayFast/)
+
 [ Payfast.AspNet Nuget Link](https://www.nuget.org/packages/PayFast.AspNet/)
+
 [ Payfast.AspNetCore Nuget Link](https://www.nuget.org/packages/PayFast.AspNetCore/)
 
 > Install-Package PayFast
