@@ -163,9 +163,18 @@
 
             this.logger.LogInformation($"Ip Address Validation Result: {merchantIdValidationResult}");
 
-            var dataValidationResult = payfastValidator.ValidateData();
+            // Currently seems that the data validation only works for success
+            if (payFastNotifyViewModel.payment_status == PayFastStatics.CompletePaymentConfirmation)
+            {
+                var dataValidationResult = await payfastValidator.ValidateData();
 
-            this.logger.LogInformation($"Data Validation Result: {dataValidationResult}");
+                this.logger.LogInformation($"Data Validation Result: {dataValidationResult}");
+            }
+
+            if (payFastNotifyViewModel.payment_status == PayFastStatics.CancelledPaymentConfirmation)
+            {
+                this.logger.LogInformation($"Subscription was cancelled");
+            }
 
             return Ok();
         }

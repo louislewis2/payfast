@@ -108,13 +108,11 @@
         {
             try
             {
-                var nameValueCollection = this.Notify.GetNameValueCollection();
-                var nameValueList = new Dictionary<string, string>();
+                var nameValueList = this.Notify.GetUnderlyingProperties();
 
-                foreach (string key in nameValueCollection)
+                if (nameValueList == null)
                 {
-                    var value = nameValueCollection.Get(key);
-                    nameValueList.Add(key: key, value: value);
+                    return false;
                 }
 
                 using (var formContent = new FormUrlEncodedContent(nameValueList))

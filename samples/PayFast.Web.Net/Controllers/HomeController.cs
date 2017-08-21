@@ -171,9 +171,18 @@
 
             System.Diagnostics.Debug.WriteLine($"Ip Address Validation Result: {merchantIdValidationResult}");
 
-            var dataValidationResult = await payfastValidator.ValidateData();
+            // Currently seems that the data validation only works for successful payments
+            if (payFastNotifyViewModel.payment_status == PayFastStatics.CompletePaymentConfirmation)
+            {
+                var dataValidationResult = await payfastValidator.ValidateData();
 
-            System.Diagnostics.Debug.WriteLine($"Data Validation Result: {dataValidationResult}");
+                System.Diagnostics.Debug.WriteLine($"Data Validation Result: {dataValidationResult}");
+            }
+
+            if (payFastNotifyViewModel.payment_status == PayFastStatics.CancelledPaymentConfirmation)
+            {
+                System.Diagnostics.Debug.WriteLine($"Subscription was cancelled");
+            }
 
             return new HttpStatusCodeResult(HttpStatusCode.OK);
         }

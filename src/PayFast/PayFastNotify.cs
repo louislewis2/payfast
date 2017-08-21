@@ -493,6 +493,11 @@
             return this.CreateHash(stringBuilder);
         }
 
+        public Dictionary<string, string> GetUnderlyingProperties()
+        {
+            return this.properties;
+        }
+
         public bool CheckSignature()
         {
             var securityHash = this.GetCalculatedSignature();
