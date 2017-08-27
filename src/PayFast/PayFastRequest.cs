@@ -4,6 +4,8 @@
     using System.Text;
     using System.Collections.Specialized;
 
+    using PayFast.Base;
+
     public class PayFastRequest : PayFastBase
     {
         #region Constructor
@@ -243,7 +245,7 @@
 
             var securityHash = this.CreateHash(stringBuilder);
 
-            if(string.IsNullOrWhiteSpace(this.passPhrase) && !stringBuilder.ToString().EndsWith("&"))
+            if (string.IsNullOrWhiteSpace(this.passPhrase) && !stringBuilder.ToString().EndsWith("&"))
             {
                 stringBuilder.Append($"&signature={this.UrlEncode(securityHash)}");
             }
@@ -292,7 +294,7 @@
         {
             string lastKey = nameValueCollection.GetKey(nameValueCollection.Count - 1);
 
-            foreach(string key in nameValueCollection)
+            foreach (string key in nameValueCollection)
             {
                 var value = nameValueCollection[key];
 

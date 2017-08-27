@@ -1,4 +1,4 @@
-﻿namespace PayFast
+﻿namespace PayFast.Base
 {
     using System;
     using System.Linq;

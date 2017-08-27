@@ -5,6 +5,8 @@
     using System.Collections.Generic;
     using System.Collections.Specialized;
 
+    using PayFast.Base;
+
     public class PayFastNotify : PayFastBase
     {
         #region Fields
