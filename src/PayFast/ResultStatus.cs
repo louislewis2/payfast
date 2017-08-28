@@ -1,4 +1,4 @@
-﻿namespace PayFast.Base
+﻿namespace PayFast
 {
     public enum ResultStatus
     {

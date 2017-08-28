@@ -10,7 +10,7 @@
     using PayFast.ApiTypes;
 
     /// <summary>
-    /// This class is intended to me used for adhoc payments
+    /// This class is intended to be used for adhoc payments
     /// See <a href="https://www.payfast.co.za/documentation/ad-hoc-payments-api-endpoints/">PayFast Ad-Hoc Payments Documentation</a> for more information.
     /// </summary>
     public class PayFastAdHoc : PayFastApiBase
