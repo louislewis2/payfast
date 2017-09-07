@@ -9,6 +9,7 @@
 
     using PayFast.Base;
     using PayFast.ApiTypes;
+    using PayFast.Exceptions;
 
     /// <summary>
     /// This class is intended to be used for subscriptions
@@ -35,6 +36,12 @@
 
         #region Methods
 
+        /// <summary>
+        /// Returns a JSON object containing the subscription details.
+        /// </summary>
+        /// <param name="token">The token received from PayFast. See <a href="https://www.payfast.co.za/documentation/return-variables/">PayFast Return variables Documentation</a> for more information</param>
+        /// <param name="testing">Pass in true to test against the sandbox. This parameter, when true appends the required '?testing=true' value to the generated query string.</param>
+        /// <exception cref = "PayFast.Exceptions.ApiResponseException"> Thrown when the returned StatusCode != HttpStatusCode.OK (200)</exception>
         public async Task<UpdateResponse> Fetch(string token, bool testing = false)
         {
             using (var httpClient = this.GetClient())
@@ -50,16 +57,29 @@
                         return response.Deserialize<UpdateResponse>();
                     }
 
-                    return null;
+                    throw new ApiResponseException(httpResponseMessage: response);
                 }
             }
         }
 
+        /// <summary>
+        /// 'Freeze' a subscription, for a duration of 1 cycle
+        /// </summary>
+        /// <param name="token">The token received from PayFast. See <a href="https://www.payfast.co.za/documentation/return-variables/">PayFast Return variables Documentation</a> for more information</param>
+        /// <param name="testing">Pass in true to test against the sandbox. This parameter, when true appends the required '?testing=true' value to the generated query string.</param>
+        /// <exception cref = "PayFast.Exceptions.ApiResponseException"> Thrown when the returned StatusCode != HttpStatusCode.OK (200)</exception>
         public async Task<AdhocResult> Pause(string token, bool testing = false)
         {
             return await this.Pause(token: token, cycles: 1, testing: testing);
         }
 
+        /// <summary>
+        /// 'Freeze' a subscription, for a duration indicated by the 'cycles' variable.
+        /// </summary>
+        /// <param name="token">The token received from PayFast. See <a href="https://www.payfast.co.za/documentation/return-variables/">PayFast Return variables Documentation</a> for more information</param>
+        /// <param name="testing">Pass in true to test against the sandbox. This parameter, when true appends the required '?testing=true' value to the generated query string.</param>
+        /// <param name="cycles">The number of payments/cycles that will occur for this subscription. Set to 0 for infinity.</param>
+        /// <exception cref = "PayFast.Exceptions.ApiResponseException"> Thrown when the returned StatusCode != HttpStatusCode.OK (200)</exception>
         public async Task<AdhocResult> Pause(string token, int cycles, bool testing = false)
         {
             using (var httpClient = this.GetClient())
@@ -79,11 +99,17 @@
                         return response.Deserialize<AdhocResult>();
                     }
 
-                    return null;
+                    throw new ApiResponseException(httpResponseMessage: response);
                 }
             }
         }
 
+        /// <summary>
+        /// 'Unfreeze' a subscription.
+        /// </summary>
+        /// <param name="token">The token received from PayFast. See <a href="https://www.payfast.co.za/documentation/return-variables/">PayFast Return variables Documentation</a> for more information</param>
+        /// <param name="testing">Pass in true to test against the sandbox. This parameter, when true appends the required '?testing=true' value to the generated query string.</param>
+        /// <exception cref = "PayFast.Exceptions.ApiResponseException"> Thrown when the returned StatusCode != HttpStatusCode.OK (200)</exception>
         public async Task<AdhocResult> UnPause(string token, bool testing = false)
         {
             using (var httpClient = this.GetClient())
@@ -99,11 +125,21 @@
                         return response.Deserialize<AdhocResult>();
                     }
 
-                    return null;
+                    throw new ApiResponseException(httpResponseMessage: response);
                 }
             }
         }
 
+        /// <summary>
+        /// This allows for multiple subscription values to be updated. If you do not wish to change a value, set the parameter to null, or do not pass in a value as it will default to null
+        /// </summary>
+        /// <param name="token">The token received from PayFast. See <a href="https://www.payfast.co.za/documentation/return-variables/">PayFast Return variables Documentation</a> for more information</param>
+        /// <param name="cycles">The number of payments/cycles that will occur for this subscription. Set to 0 for infinity.</param>
+        /// <param name="frequency">The cycle period.</param>
+        /// <param name="run_date">The date from which the cycle will be calculated</param>
+        /// <param name="amount">Future recurring amount for the subscription. In ZAR and amount in cents and not X.XX</param>
+        /// <param name="testing">Pass in true to test against the sandbox. This parameter, when true appends the required '?testing=true' value to the generated query string.</param>
+        /// <exception cref = "PayFast.Exceptions.ApiResponseException"> Thrown when the returned StatusCode != HttpStatusCode.OK (200)</exception>
         public async Task<UpdateResponse> Update(string token, int? cycles = null, BillingFrequency? frequency = null, DateTime? run_date = null, int? amount = null, bool testing = false)
         {
             using (var httpClient = this.GetClient())
@@ -147,7 +183,7 @@
                         return response.Deserialize<UpdateResponse>();
                     }
 
-                    return null;
+                    throw new ApiResponseException(httpResponseMessage: response);
                 }
             }
         }

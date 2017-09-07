@@ -8,6 +8,7 @@
 
     using PayFast.Base;
     using PayFast.ApiTypes;
+    using PayFast.Exceptions;
 
     /// <summary>
     /// This class is intended to be used for adhoc payments
@@ -32,6 +33,12 @@
 
         #region Methods
 
+        /// <summary>
+        /// Returns a JSON object containing the subscription details.
+        /// </summary>
+        /// <param name="token">The token received from PayFast. See <a href="https://www.payfast.co.za/documentation/return-variables/">PayFast Return variables Documentation</a> for more information</param>
+        /// <param name="testing">Pass in true to test against the sandbox. This parameter, when true appends the required '?testing=true' value to the generated query string.</param>
+        /// <exception cref = "PayFast.Exceptions.ApiResponseException"> Thrown when the returned StatusCode != HttpStatusCode.OK (200)</exception>
         public async Task<AdhocFetchResult> Fetch(string token, bool testing = false)
         {
             using (var httpClient = this.GetClient())
@@ -47,16 +54,33 @@
                         return response.Deserialize<AdhocFetchResult>();
                     }
 
-                    return null;
+                    throw new ApiResponseException(httpResponseMessage: response);
                 }
             }
         }
 
+        /// <summary>
+        /// Charge an ad hoc subscription based on token.
+        /// </summary>
+        /// <param name="token">The token received from PayFast. See <a href="https://www.payfast.co.za/documentation/return-variables/">PayFast Return variables Documentation</a> for more information</param>
+        /// <param name="amount">Future recurring amount for the subscription. In ZAR and amount in cents and not X.XX</param>
+        /// <param name="item_name">The name of the item being charged for. (100 chars)</param>
+        /// <param name="testing">Pass in true to test against the sandbox. This parameter, when true appends the required '?testing=true' value to the generated query string.</param>
+        /// <exception cref = "PayFast.Exceptions.ApiResponseException"> Thrown when the returned StatusCode != HttpStatusCode.OK (200)</exception>
         public async Task<AdhocResult> Charge(string token, int amount, string item_name, bool testing = false)
         {
             return await this.Charge(token: token, amount: amount, item_name: item_name, item_description: string.Empty, testing: testing);
         }
 
+        /// <summary>
+        /// Charge an ad hoc subscription based on token.
+        /// </summary>
+        /// <param name="token">The token received from PayFast. See <a href="https://www.payfast.co.za/documentation/return-variables/">PayFast Return variables Documentation</a> for more information</param>
+        /// <param name="amount">Future recurring amount for the subscription. In ZAR and amount in cents and not X.XX</param>
+        /// <param name="item_name">The name of the item being charged for. (100 chars)</param>
+        /// <param name="item_description">The description of the item being charged for.  (255 chars)</param>
+        /// <param name="testing">Pass in true to test against the sandbox. This parameter, when true appends the required '?testing=true' value to the generated query string.</param>
+        /// <exception cref = "PayFast.Exceptions.ApiResponseException"> Thrown when the returned StatusCode != HttpStatusCode.OK (200)</exception>
         public async Task<AdhocResult> Charge(string token, int amount, string item_name, string item_description, bool testing = false)
         {
             using (var httpClient = this.GetClient())
@@ -82,7 +106,7 @@
                         return response.Deserialize<AdhocResult>();
                     }
 
-                    return null;
+                    throw new ApiResponseException(httpResponseMessage: response);
                 }
             }
         }

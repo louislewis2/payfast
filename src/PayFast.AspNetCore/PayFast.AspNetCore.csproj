@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <Description>PayFast Integration Library For Asp.Net Core</Description>
-    <VersionPrefix>1.0.2-alpha</VersionPrefix>
+    <VersionPrefix>1.0.3</VersionPrefix>
     <Authors>Louis Lewis</Authors>
     <AssemblyName>PayFast.AspNetCore</AssemblyName>
     <PackageId>PayFast.AspNetCore</PackageId>
@@ -12,7 +12,7 @@
     <RepositoryUrl>https://github.com/louislewis2/payfast</RepositoryUrl>
     <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
     <TargetFrameworks>netstandard1.6;netstandard2.0</TargetFrameworks>
-    <PackageReleaseNotes>Correct an issue with the validator class, causing it to return incorrect results</PackageReleaseNotes>
+    <PackageReleaseNotes>Add support for the Subscription and Adhoc Api Endpoints</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/louislewis2/payfast</PackageProjectUrl>
   </PropertyGroup>
 

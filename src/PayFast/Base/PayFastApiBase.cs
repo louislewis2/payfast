@@ -9,6 +9,7 @@
     using System.Collections.Generic;
 
     using PayFast.ApiTypes;
+    using PayFast.Exceptions;
 
     public class PayFastApiBase
     {
@@ -51,6 +52,12 @@
             return httpClient;
         }
 
+        /// <summary>
+        /// Used to check if the API is responding to requests.
+        /// </summary>
+        /// <param name="token">The token received from PayFast. See <a href="https://www.payfast.co.za/documentation/return-variables/">PayFast Return variables Documentation</a> for more information</param>
+        /// <param name="testing">Pass in true to test against the sandbox. This parameter, when true appends the required '?testing=true' value to the generated query string.</param>
+        /// <exception cref = "PayFast.Exceptions.ApiResponseException"> Thrown when the returned StatusCode != HttpStatusCode.OK (200)</exception>
         public async Task<bool> Ping(string token, bool testing = false)
         {
             using (var httpClient = this.GetClient())
@@ -68,11 +75,17 @@
                         return payload == "true";
                     }
 
-                    return false;
+                    throw new ApiResponseException(httpResponseMessage: response);
                 }
             }
         }
 
+        /// <summary>
+        /// This will cancel a subscription entirely.
+        /// </summary>
+        /// <param name="token">The token received from PayFast. See <a href="https://www.payfast.co.za/documentation/return-variables/">PayFast Return variables Documentation</a> for more information</param>
+        /// <param name="testing">Pass in true to test against the sandbox. This parameter, when true appends the required '?testing=true' value to the generated query string.</param>
+        /// <exception cref = "PayFast.Exceptions.ApiResponseException"> Thrown when the returned StatusCode != HttpStatusCode.OK (200)</exception>
         public async Task<AdhocCancelResult> Cancel(string token, bool testing = false)
         {
             using (var httpClient = this.GetClient())
@@ -88,7 +101,7 @@
                         return response.Deserialize<AdhocCancelResult>();
                     }
 
-                    return null;
+                    throw new ApiResponseException(httpResponseMessage: response);
                 }
             }
         }

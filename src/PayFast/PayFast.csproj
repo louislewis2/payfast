@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <Description>PayFast Integration Library</Description>
-    <VersionPrefix>1.0.2-alpha</VersionPrefix>
+    <VersionPrefix>1.0.3</VersionPrefix>
     <Authors>Louis Lewis</Authors>
     <TargetFrameworks>net45;net451;net452;net46;net461;net462;netstandard1.6</TargetFrameworks>
     <AssemblyName>PayFast</AssemblyName>
@@ -16,8 +16,12 @@
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-    <PackageReleaseNotes>Correct an issue with the validator class, causing it to return incorrect results</PackageReleaseNotes>
+    <PackageReleaseNotes>Add support for the Subscription and Adhoc Api Endpoints</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/louislewis2/payfast</PackageProjectUrl>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\PayFast.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(TargetFramework)' == 'net45'">

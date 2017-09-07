@@ -12,6 +12,14 @@ The function of these model binders are to ensure that the variables are read in
 from the incoming form on the request and written correctly to the PayFastNotify class instance.
 The samples have been updated to showcase how they are used.
 
+Support for the AdHoc & Subscription endpoints have now been added.
+Testing has been done to ensure that when a request is succesfull that all the variables
+are correct and match the expected values. Work still needs to be done to handle all failures.
+The status and code variables can be used to check this.
+
+I am in the process of adding xml documentation for all types and methods. This is a process,
+and more will get added in future releases.
+
 Please be sure to use the correct package for the version of Asp.Net you are using.
 
 # Live Samples
@@ -38,6 +46,11 @@ There are now two live samples
 * Recurring Billing
 * AdHoc Agreements
 
+# Supported API Endpoints
+
+* AdHoc
+* Subscription
+
 # Support Post Type
 
 * ITN Callback post from PayFast
@@ -47,8 +60,9 @@ There are now two live samples
 > Note this is still under development and it is not recommended to rely on for production use cases yet.
 
 There is a new class called PayFastValidator, it is used to validate the PayFastNotify object created from a 
-itn post from PayFast. It currently returns inconsistant results for data validation requests, a matter that must be taken up with
-PayFast and checked before it can be used in production.
+itn post from PayFast. All efforts have been taken to ensure that the validator class works as expected and it is now
+considered stable. However it is still recommended to keep any validation you currently use in place, while this 
+class is being used. It is new code and should be treated as such, as always feedback is greatly appreciated.
 
 It currently has the following validations available
 
@@ -74,7 +88,7 @@ Feel free to give it a try and get your feedback back to me.
 
 > Install-Package PayFast.AspNetCore
 
-The latest version is 1.0.2. It is a pre-release, pending testing and feedback.
+The latest version is 1.0.3.
 
 # Samples
 
