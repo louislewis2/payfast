@@ -133,5 +133,36 @@
             // Assert
             Assert.Equal("66d25171083fa3e36ff3ebaa3c7f0713", signature);
         }
+		
+		
+
+        [Fact]
+        public void Can_Generate_Correct_Signature_With_Foreign_Characters()
+        {
+            // Arrange
+            var onceOffRequest = new PayFastRequest();
+
+            // Merchant Details
+            onceOffRequest.merchant_id = "10000100";
+            onceOffRequest.merchant_key = "46f0cd694581a";
+            onceOffRequest.return_url = "https://5ca4377c.ngrok.io/home/return";
+            onceOffRequest.cancel_url = "https://5ca4377c.ngrok.io/home/cancel";
+            onceOffRequest.notify_url = "https://5ca4377c.ngrok.io/home/notify";
+
+            // Buyer Details
+            onceOffRequest.email_address = "sbtu01@payfast.co.za";
+
+            // Transaction Details
+            onceOffRequest.m_payment_id = "8d00bf49-e979-4004-228c-08d452b86380";
+            onceOffRequest.amount = 30;
+            onceOffRequest.item_name = "Foreign Çhåractérs";
+            onceOffRequest.item_description = "Some details about the once off payment";
+
+            // Act
+            var signature = onceOffRequest.signature;
+
+            // Assert
+            Assert.Equal("c83013dd7ff3e7c4b0917b2af6e4bfcc", signature);
+        }
     }
 }

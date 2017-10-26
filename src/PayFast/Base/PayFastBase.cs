@@ -133,7 +133,7 @@
 
             var md5 = MD5.Create();
 
-            var inputBytes = Encoding.ASCII.GetBytes(inputStringBuilder.ToString());
+            var inputBytes = Encoding.UTF8.GetBytes(inputStringBuilder.ToString());
 
             var hash = md5.ComputeHash(inputBytes);
 
