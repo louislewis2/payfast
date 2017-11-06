@@ -65,7 +65,7 @@
             {
                 var currentEnumValue = propertyInfo.GetValue(this, null);
 
-                if(currentEnumValue == null)
+                if (currentEnumValue == null)
                 {
                     return string.Empty;
                 }
@@ -81,7 +81,7 @@
                 {
                     var booleanValue = (bool?)propertyInfo.GetValue(this, null);
 
-                    return booleanValue.HasValue ?  booleanValue.Value ? "1" : "0" : string.Empty;
+                    return booleanValue.HasValue ? booleanValue.Value ? "1" : "0" : string.Empty;
                 }
                 else
                 {
@@ -93,7 +93,7 @@
 
             if (propertyInfo.PropertyType.IsAssignableFrom(typeof(DateTime)))
             {
-                if(propertyInfo.PropertyType == typeof(DateTime?))
+                if (propertyInfo.PropertyType == typeof(DateTime?))
                 {
                     var dateTimeValue = (DateTime?)propertyInfo.GetValue(this, null);
 
@@ -112,8 +112,15 @@
 
         protected string UrlEncode(string url)
         {
-
-            return System.Net.WebUtility.UrlEncode(url.Trim()); 
+            string encoded =  System.Net.WebUtility.UrlEncode(url.Trim());
+            
+            //Fix for .NET missing out some characaters when encoding
+            StringBuilder sb = new StringBuilder(encoded);
+            return sb
+                  .Replace("(", "%28")
+                  .Replace(")", "%29")
+                  .Replace("!", "%21")
+                  .ToString();
         }
 
         protected string CreateHash(StringBuilder input)
