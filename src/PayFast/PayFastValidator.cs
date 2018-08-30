@@ -119,6 +119,8 @@
                 {
                     using (var webClient = new HttpClient())
                     {
+                        //Forces use of higher ssl. Connection was being forcibly closed on the payfast sandbox when attempting to validate.
+                        System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
                         using (var response = await webClient.PostAsync(this.Settings.ValidateUrl, formContent))
                         {
                             if (response.IsSuccessStatusCode)
