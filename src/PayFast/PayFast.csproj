@@ -2,21 +2,19 @@
 
   <PropertyGroup>
     <Description>PayFast Integration Library</Description>
-    <VersionPrefix>1.0.3</VersionPrefix>
+    <VersionPrefix>1.0.4</VersionPrefix>
     <Authors>Louis Lewis</Authors>
-    <TargetFrameworks>net45;net451;net452;net46;net461;net462;netstandard1.6</TargetFrameworks>
+    <TargetFrameworks>net45;net451;net452;net46;net461;net462;netstandard1.6;netstandard2.0</TargetFrameworks>
     <AssemblyName>PayFast</AssemblyName>
     <PackageId>PayFast</PackageId>
     <PackageTags>PayFast;PayFast Integration</PackageTags>
     <PackageLicenseUrl>https://github.com/louislewis2/payfast/blob/master/License.md</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/louislewis2/payfast</RepositoryUrl>
-    <NetStandardImplicitPackageVersion>1.6.1</NetStandardImplicitPackageVersion>
-    <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard1.6' ">$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-    <PackageReleaseNotes>Add support for the Subscription and Adhoc Api Endpoints</PackageReleaseNotes>
+    <PackageReleaseNotes>Add Netstandard 2.0 Support</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/louislewis2/payfast</PackageProjectUrl>
   </PropertyGroup>
 
@@ -52,21 +50,25 @@
     <DefineConstants>COREFX;NETCORE;NETSTANDARD;NETSTANDARD1_6</DefineConstants>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0'">
+    <DefineConstants>COREFX;NETCORE;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
+  </PropertyGroup>
+
   <ItemGroup Condition="'$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net451' or '$(TargetFramework)'=='net452' or '$(TargetFramework)'=='net46' or '$(TargetFramework)'=='net461' or '$(TargetFramework)'=='net462' ">
     <Reference Include="System" />
     <Reference Include="System.Net.Http" />
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.6' ">
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.6' OR '$(TargetFramework)'=='netstandard2.0' ">
     <PackageReference Include="System.Collections.Specialized" Version="4.3.0" />
-    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.3.0" />
+    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.5.1" />
     <PackageReference Include="System.Net.NameResolution" Version="4.3.0" />
-    <PackageReference Include="System.Net.Http" Version="4.3.2" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
   </ItemGroup>
 
 </Project>

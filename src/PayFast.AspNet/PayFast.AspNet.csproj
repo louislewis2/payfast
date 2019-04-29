@@ -1,8 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <Description>PayFast Integration Library For Asp.Net</Description>
-    <VersionPrefix>1.0.3</VersionPrefix>
+    <VersionPrefix>1.0.4</VersionPrefix>
     <Authors>Louis Lewis</Authors>
     <AssemblyName>PayFast.AspNet</AssemblyName>
     <PackageId>PayFast.AspNet</PackageId>
@@ -12,7 +12,7 @@
     <RepositoryUrl>https://github.com/louislewis2/payfast</RepositoryUrl>
     <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
     <TargetFrameworks>net45;net451;net452;net46;</TargetFrameworks>
-    <PackageReleaseNotes>Add support for the Subscription and Adhoc Api Endpoints</PackageReleaseNotes>
+    <PackageReleaseNotes>Add Netstandard 2.0 Support</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/louislewis2/payfast</PackageProjectUrl>
   </PropertyGroup>
 

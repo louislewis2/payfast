@@ -26,8 +26,26 @@ Please be sure to use the correct package for the version of Asp.Net you are usi
 
 There are now two live samples
 
-* [Asp.Net](https://payfast-demo-mvc.azurewebsites.net)
-* [Asp.Net Core](https://payfast-demo.azurewebsites.net)
+* [Asp.Net](https://payfast-demo-mvc.azurewebsites.net/)
+* [Asp.Net Core](http://payfast-demo-core.azurewebsites.net/)
+
+# Packages
+
+## Nuget Feed
+
+[ Payfast Nuget Link](https://www.nuget.org/packages/PayFast/)
+
+[ Payfast.AspNet Nuget Link](https://www.nuget.org/packages/PayFast.AspNet/)
+
+[ Payfast.AspNetCore Nuget Link](https://www.nuget.org/packages/PayFast.AspNetCore/)
+
+> Install-Package PayFast
+
+> Install-Package PayFast.AspNet
+
+> Install-Package PayFast.AspNetCore
+
+The latest version is 1.0.4.
 
 # Supported Runtimes
 
@@ -37,8 +55,7 @@ There are now two live samples
 * .Net 4.6.1
 * .Net 4.6.2
 * .Net Standard 1.6
-
-> .Net Standard 2.0 Comming Soon
+* .Net Standard 2.0
 
 # Supported Request Types
 
@@ -71,24 +88,6 @@ It currently has the following validations available
 * Validate Data
 
 Feel free to give it a try and get your feedback back to me.
-
-# Packages
-
-## Nuget Feed
-
-[ Payfast Nuget Link](https://www.nuget.org/packages/PayFast/)
-
-[ Payfast.AspNet Nuget Link](https://www.nuget.org/packages/PayFast.AspNet/)
-
-[ Payfast.AspNetCore Nuget Link](https://www.nuget.org/packages/PayFast.AspNetCore/)
-
-> Install-Package PayFast
-
-> Install-Package PayFast.AspNet
-
-> Install-Package PayFast.AspNetCore
-
-The latest version is 1.0.3.
 
 # Samples
 

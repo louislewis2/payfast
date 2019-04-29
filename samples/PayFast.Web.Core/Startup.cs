@@ -10,40 +10,46 @@
 
     public class Startup
     {
-        public Startup(IHostingEnvironment env)
+        #region Constructor
+
+        public Startup(IConfiguration configuration)
         {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-                .AddEnvironmentVariables();
-            Configuration = builder.Build();
+            this.Configuration = configuration;
         }
 
-        public IConfigurationRoot Configuration { get; }
+        #endregion Constructor
+
+        #region Properties
+
+        public IConfiguration Configuration { get; }
+
+        #endregion Properties
+
+        #region Methods
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<PayFastSettings>(Configuration.GetSection("PayFastSettings"));
+            services.Configure<PayFastSettings>(this.Configuration.GetSection("PayFastSettings"));
 
             services.AddMvc();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            loggerFactory.AddConsole(this.Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();
             }
             else
             {
                 app.UseExceptionHandler("/Home/Error");
+                app.UseHsts();
             }
 
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseMvc(routes =>
@@ -53,5 +59,7 @@
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
+
+        #endregion Methods
     }
 }
