@@ -161,7 +161,7 @@
 
             var ipAddressValidationResult = await payfastValidator.ValidateSourceIp();
 
-            this.logger.LogInformation($"Ip Address Validation Result: {merchantIdValidationResult}");
+            this.logger.LogInformation($"Ip Address Validation Result: {ipAddressValidationResult}");
 
             // Currently seems that the data validation only works for success
             if (payFastNotifyViewModel.payment_status == PayFastStatics.CompletePaymentConfirmation)
