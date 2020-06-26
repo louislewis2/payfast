@@ -30,6 +30,7 @@
 
         #region Properties
 
+        protected const string ServerUrl = "https://api.payfast.co.za/";
         protected const string BaseUrl = "https://api.payfast.co.za/subscriptions/";
         protected const string ApiVersion = "v1";
         protected const string TestMode = "?testing=true";
@@ -52,6 +53,18 @@
             return httpClient;
         }
 
+        protected HttpClient GetBaseClient()
+        {
+            var httpClient = new HttpClient { BaseAddress = new Uri(ServerUrl) };
+
+            httpClient.DefaultRequestHeaders.Clear();
+            httpClient.DefaultRequestHeaders.Add("merchant-id", this.payfastSettings.MerchantId);
+            httpClient.DefaultRequestHeaders.Add("version", ApiVersion);
+            httpClient.DefaultRequestHeaders.Add("timestamp", DateTime.UtcNow.ToString("s"));
+
+            return httpClient;
+        }
+
         /// <summary>
         /// Used to check if the API is responding to requests.
         /// </summary>
@@ -60,9 +73,9 @@
         /// <exception cref = "PayFast.Exceptions.ApiResponseException"> Thrown when the returned StatusCode != HttpStatusCode.OK (200)</exception>
         public async Task<bool> Ping(string token, bool testing = false)
         {
-            using (var httpClient = this.GetClient())
+            using (var httpClient = this.GetBaseClient())
             {
-                var finalUrl = testing ? $"{token}/{PingResourceUrl}{TestMode}" : $"{token}/{PingResourceUrl}";
+                var finalUrl = testing ? $"{PingResourceUrl}{TestMode}" : $"{PingResourceUrl}";
 
                 this.GenerateSignature(httpClient);
 
@@ -72,7 +85,7 @@
                     {
                         var payload = await response.Content.ReadAsStringAsync();
 
-                        return payload == "true";
+                        return payload == "\"PayFast API\"";
                     }
 
                     throw new ApiResponseException(httpResponseMessage: response);
