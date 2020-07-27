@@ -61,6 +61,18 @@
                 return ((byte)billingFrequency).ToString();
             }
 
+            if (propertyInfo.PropertyType.IsAssignableFrom(typeof(double)))
+            {
+                var currentValue = propertyInfo.GetValue(this, null);
+
+                if (currentValue == null)
+                {
+                    return string.Empty;
+                }
+
+                return Convert.ToString(currentValue, System.Globalization.CultureInfo.InvariantCulture).Replace(',', '.');
+            }
+
             if (propertyInfo.PropertyType.IsAssignableFrom(typeof(SubscriptionType)))
             {
                 var currentEnumValue = propertyInfo.GetValue(this, null);
