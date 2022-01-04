@@ -16,6 +16,9 @@
 
         #region Properties
 
+        /// <summary>
+        /// The response from the api call
+        /// </summary>
         public HttpResponseMessage HttpResponseMessage { get; }
 
         #endregion Properties

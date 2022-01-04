@@ -47,15 +47,14 @@
 
                 this.GenerateSignature(httpClient);
 
-                using (var response = await httpClient.GetAsync(finalUrl))
-                {
-                    if (response.StatusCode == HttpStatusCode.OK)
-                    {
-                        return response.Deserialize<AdhocFetchResult>();
-                    }
+                var response = await httpClient.GetAsync(finalUrl);
 
-                    throw new ApiResponseException(httpResponseMessage: response);
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    return response.Deserialize<AdhocFetchResult>();
                 }
+
+                throw new ApiResponseException(httpResponseMessage: response);
             }
         }
 
@@ -99,15 +98,14 @@
                 var parameterValue = this.GenerateSignature(httpClient, incommingParameters.ToArray());
                 var content = new StringContent(parameterValue, Encoding.UTF8, "application/json");
 
-                using (var response = await httpClient.PostAsync(finalUrl, content))
-                {
-                    if (response.StatusCode == HttpStatusCode.OK)
-                    {
-                        return response.Deserialize<AdhocResult>();
-                    }
+                var response = await httpClient.PostAsync(finalUrl, content);
 
-                    throw new ApiResponseException(httpResponseMessage: response);
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    return response.Deserialize<AdhocResult>();
                 }
+
+                throw new ApiResponseException(httpResponseMessage: response);
             }
         }
 
