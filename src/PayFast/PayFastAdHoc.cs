@@ -9,6 +9,7 @@
     using PayFast.Base;
     using PayFast.ApiTypes;
     using PayFast.Exceptions;
+    using System.Diagnostics;
 
     /// <summary>
     /// This class is intended to be used for adhoc payments
@@ -58,6 +59,7 @@
             }
         }
 
+        #region Charge
         /// <summary>
         /// Charge an ad hoc subscription based on token.
         /// </summary>
@@ -68,7 +70,21 @@
         /// <exception cref = "PayFast.Exceptions.ApiResponseException"> Thrown when the returned StatusCode != HttpStatusCode.OK (200)</exception>
         public async Task<AdhocResult> Charge(string token, int amount, string item_name, bool testing = false)
         {
-            return await this.Charge(token: token, amount: amount, item_name: item_name, item_description: string.Empty, testing: testing);
+            return await this.Charge(token: token, amount: amount, item_name: item_name, item_description: string.Empty, m_payment_id: string.Empty, testing: testing);
+        }
+
+        /// <summary>
+        /// Charge an ad hoc subscription based on token.
+        /// </summary>
+        /// <param name="token">The token received from PayFast. See <a href="https://www.payfast.co.za/documentation/return-variables/">PayFast Return variables Documentation</a> for more information</param>
+        /// <param name="amount">Future recurring amount for the subscription. In ZAR and amount in cents and not X.XX</param>
+        /// <param name="item_name">The name of the item being charged for. (100 chars)</param>
+        /// <param name="m_payment_id">(optional) Unique payment ID on the merchant's system.</param>
+        /// <param name="testing">Pass in true to test against the sandbox. This parameter, when true appends the required '?testing=true' value to the generated query string.</param>
+        /// <exception cref = "PayFast.Exceptions.ApiResponseException"> Thrown when the returned StatusCode != HttpStatusCode.OK (200)</exception>
+        public async Task<AdhocResult> Charge(string token, int amount, string item_name, string m_payment_id, bool testing = false)
+        {
+            return await this.Charge(token: token, amount: amount, item_name: item_name, item_description: string.Empty, m_payment_id: m_payment_id, testing: testing);
         }
 
         /// <summary>
@@ -78,9 +94,10 @@
         /// <param name="amount">Future recurring amount for the subscription. In ZAR and amount in cents and not X.XX</param>
         /// <param name="item_name">The name of the item being charged for. (100 chars)</param>
         /// <param name="item_description">The description of the item being charged for.  (255 chars)</param>
+        /// <param name="m_payment_id">(optional) Unique payment ID on the merchant's system.</param>
         /// <param name="testing">Pass in true to test against the sandbox. This parameter, when true appends the required '?testing=true' value to the generated query string.</param>
         /// <exception cref = "PayFast.Exceptions.ApiResponseException"> Thrown when the returned StatusCode != HttpStatusCode.OK (200)</exception>
-        public async Task<AdhocResult> Charge(string token, int amount, string item_name, string item_description, bool testing = false)
+        public async Task<AdhocResult> Charge(string token, int amount, string item_name, string item_description, string m_payment_id, bool testing = false)
         {
             using (var httpClient = this.GetClient())
             {
@@ -89,11 +106,8 @@
                 var incommingParameters = new List<KeyValuePair<string, string>>();
                 incommingParameters.Add(new KeyValuePair<string, string>("amount", amount.ToString()));
                 incommingParameters.Add(new KeyValuePair<string, string>("item_name", item_name));
-
-                if (!string.IsNullOrWhiteSpace(item_description))
-                {
-                    incommingParameters.Add(new KeyValuePair<string, string>("item_description", item_description));
-                }
+                if (!string.IsNullOrWhiteSpace(item_description)) { incommingParameters.Add(new KeyValuePair<string, string>("item_description", item_description)); }
+                if (!string.IsNullOrWhiteSpace(m_payment_id)) incommingParameters.Add(new KeyValuePair<string, string>("m_payment_id", m_payment_id));
 
                 var parameterValue = this.GenerateSignature(httpClient, incommingParameters.ToArray());
                 var content = new StringContent(parameterValue, Encoding.UTF8, "application/json");
@@ -108,7 +122,7 @@
                 throw new ApiResponseException(httpResponseMessage: response);
             }
         }
-
+        #endregion
         #endregion Methods
     }
 }
