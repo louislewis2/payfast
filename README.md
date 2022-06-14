@@ -54,7 +54,6 @@ The latest version is 1.0.4.
 * .Net 4.6
 * .Net 4.6.1
 * .Net 4.6.2
-* .Net Standard 1.6
 * .Net Standard 2.0
 
 # Supported Request Types
