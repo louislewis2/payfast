@@ -10,7 +10,7 @@
 	<PackageLicenseUrl>https://github.com/louislewis2/payfast/blob/master/License.md</PackageLicenseUrl>
 	<RepositoryType>git</RepositoryType>
 	<RepositoryUrl>https://github.com/louislewis2/payfast</RepositoryUrl>
-	<TargetFrameworks>net6.0</TargetFrameworks>
+	<TargetFramework>net6.0</TargetFramework>
 	<PackageReleaseNotes>Update to .Net 6</PackageReleaseNotes>
 	<PackageProjectUrl>https://github.com/louislewis2/payfast</PackageProjectUrl>
 </PropertyGroup>
