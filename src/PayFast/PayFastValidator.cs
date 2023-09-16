@@ -106,41 +106,34 @@
 
         private async Task<bool> ValidateDataAsync(PayFastNotify notifyViewModel)
         {
-            try
+            var nameValueList = this.Notify.GetUnderlyingProperties();
+
+            if (nameValueList == null)
             {
-                var nameValueList = this.Notify.GetUnderlyingProperties();
+                return false;
+            }
 
-                if (nameValueList == null)
+            using (var formContent = new FormUrlEncodedContent(nameValueList))
+            {
+                using (var webClient = new HttpClient())
                 {
-                    return false;
-                }
-
-                using (var formContent = new FormUrlEncodedContent(nameValueList))
-                {
-                    using (var webClient = new HttpClient())
+                    using (var response = await webClient.PostAsync(this.Settings.ValidateUrl, formContent))
                     {
-                        using (var response = await webClient.PostAsync(this.Settings.ValidateUrl, formContent))
+                        if (response.IsSuccessStatusCode)
                         {
-                            if (response.IsSuccessStatusCode)
+                            var result = await response.Content.ReadAsStringAsync();
+
+                            if (result == null || !result.Equals("VALID"))
                             {
-                                var result = await response.Content.ReadAsStringAsync();
-
-                                if (result == null || !result.Equals("VALID"))
-                                {
-                                    return false;
-                                }
-
-                                return true;
+                                return false;
                             }
 
-                            return false;
+                            return true;
                         }
+
+                        return false;
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
             }
         }
 
