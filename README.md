@@ -20,14 +20,9 @@ The status and code variables can be used to check this.
 I am in the process of adding xml documentation for all types and methods. This is a process,
 and more will get added in future releases.
 
-Please be sure to use the correct package for the version of Asp.Net you are using.
-
 # Live Samples
 
-There are now two live samples
-
-* [Asp.Net](https://payfast-demo-mvc.azurewebsites.net/)
-* [Asp.Net Core](http://payfast-demo-core.azurewebsites.net/)
+* [Asp.Net](http://payfast-demo.azurewebsites.net/)
 
 # Packages
 
@@ -35,27 +30,17 @@ There are now two live samples
 
 [ Payfast Nuget Link](https://www.nuget.org/packages/PayFast/)
 
-[ Payfast.AspNet Nuget Link](https://www.nuget.org/packages/PayFast.AspNet/)
-
 [ Payfast.AspNetCore Nuget Link](https://www.nuget.org/packages/PayFast.AspNetCore/)
 
 > Install-Package PayFast
 
-> Install-Package PayFast.AspNet
-
 > Install-Package PayFast.AspNetCore
 
-The latest version is 1.0.4.
+The latest version is 2.0.0.
 
 # Supported Runtimes
 
-* .Net 4.5
-* .Net 4.5.1
-* .Net 4.6
-* .Net 4.6.1
-* .Net 4.6.2
-* .Net Standard 1.6
-* .Net Standard 2.0
+* .Net 6.0
 
 # Supported Request Types
 
@@ -92,7 +77,6 @@ Feel free to give it a try and get your feedback back to me.
 # Samples
 
 Samples can be found in the samples directory on disk, or in the samples solution folder in VS.
-There are now two samples, one for Asp.Net Mvc 5 and the other for Asp.Net Core
 
 ## PayFast.Web.Core
 
