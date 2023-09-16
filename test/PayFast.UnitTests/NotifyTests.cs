@@ -11,21 +11,33 @@
             var passPhrase = "salt";
             var notifyViewModel = new PayFastNotify();
             notifyViewModel.SetPassPhrase(passPhrase);
-            notifyViewModel.amount_fee = "0.00";
-            notifyViewModel.amount_gross = "20.00";
-            notifyViewModel.amount_net = "20.00";
-            notifyViewModel.billing_date = "2017-02-13";
-            notifyViewModel.email_address = "sbtu01@payfast.co.za";
-            notifyViewModel.item_description = "Some details about option 2";
-            notifyViewModel.item_name = "Option 2";
             notifyViewModel.m_payment_id = "8d00bf49-e979-4004-228c-08d452b86380";
-            notifyViewModel.merchant_id = "10004241";
-            notifyViewModel.name_first = "Test";
-            notifyViewModel.name_last = "User 01";
+            notifyViewModel.pf_payment_id = "1847925";
             notifyViewModel.payment_status = "COMPLETE";
-            notifyViewModel.pf_payment_id = "327767";
-            notifyViewModel.signature = "c5cce9e08316373ca2ba6b427e39772e";
-            notifyViewModel.token = "01c3f68f-5802-4760-c0a5-85d658ccff99";
+            notifyViewModel.item_name = "Recurring Option";
+            notifyViewModel.item_description = "Some details about the recurring option";
+            notifyViewModel.amount_gross = "20.00";
+            notifyViewModel.amount_fee = "-2.30";
+            notifyViewModel.amount_net = "17.70";
+
+            notifyViewModel.custom_str1 = string.Empty;
+            notifyViewModel.custom_str2 = string.Empty;
+            notifyViewModel.custom_str3 = string.Empty;
+            notifyViewModel.custom_str4 = string.Empty;
+            notifyViewModel.custom_str5 = string.Empty;
+            notifyViewModel.custom_int1 = string.Empty;
+            notifyViewModel.custom_int2 = string.Empty;
+            notifyViewModel.custom_int3 = string.Empty;
+            notifyViewModel.custom_int4 = string.Empty;
+            notifyViewModel.custom_int5 = string.Empty;
+            notifyViewModel.name_first  = string.Empty;
+            notifyViewModel.name_last   = string.Empty;
+
+            notifyViewModel.email_address = "sbtu01@payfast.co.za";
+            notifyViewModel.merchant_id = "10004241";
+            notifyViewModel.token = "5a538bc0-ce28-47d4-98bd-9ee7bc11ad56";
+            notifyViewModel.billing_date = "2023-09-16";
+            notifyViewModel.signature = "bf1986d6bed6b382e0f88f32a92fee03";
 
             // Act
             var calculatedSignature = notifyViewModel.GetCalculatedSignature();
@@ -39,19 +51,31 @@
         {
             // Arrange
             var notifyViewModel = new PayFastNotify();
-            notifyViewModel.amount_fee = "-2.28";
-            notifyViewModel.amount_gross = "30.00";
-            notifyViewModel.amount_net = "27.72";
-            notifyViewModel.email_address = "sbtu01@payfast.co.za";
-            notifyViewModel.item_description = "Some details about the once off payment";
-            notifyViewModel.item_name = "Once off option";
             notifyViewModel.m_payment_id = "8d00bf49-e979-4004-228c-08d452b86380";
-            notifyViewModel.merchant_id = "10004241";
-            notifyViewModel.name_first = "Test";
-            notifyViewModel.name_last = "User 01";
+            notifyViewModel.pf_payment_id = "1847945";
             notifyViewModel.payment_status = "COMPLETE";
-            notifyViewModel.pf_payment_id = "392624";
-            notifyViewModel.signature = "a8a4d344281414843db03880265e3d94";
+            notifyViewModel.item_name = "Once off option";
+            notifyViewModel.item_description = "Some details about the once off payment";
+            notifyViewModel.amount_gross = "30.00";
+            notifyViewModel.amount_fee = "-2.30";
+            notifyViewModel.amount_net = "27.70";
+
+            notifyViewModel.custom_str1 = string.Empty;
+            notifyViewModel.custom_str2 = string.Empty;
+            notifyViewModel.custom_str3 = string.Empty;
+            notifyViewModel.custom_str4 = string.Empty;
+            notifyViewModel.custom_str5 = string.Empty;
+            notifyViewModel.custom_int1 = string.Empty;
+            notifyViewModel.custom_int2 = string.Empty;
+            notifyViewModel.custom_int3 = string.Empty;
+            notifyViewModel.custom_int4 = string.Empty;
+            notifyViewModel.custom_int5 = string.Empty;
+            notifyViewModel.name_first = string.Empty;
+            notifyViewModel.name_last = string.Empty;
+
+            notifyViewModel.email_address = "sbtu01@payfast.co.za";
+            notifyViewModel.merchant_id = "10004241";
+            notifyViewModel.signature = "94ea076d95918eb0661f37ecbf206552";
 
             // Act
             var calculatedSignature = notifyViewModel.GetCalculatedSignature();

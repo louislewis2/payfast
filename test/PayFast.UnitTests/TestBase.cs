@@ -31,16 +31,6 @@
             return this.serviceProvider.GetService<T>();
         }
 
-        protected PayFastSettings GetTestSettings()
-        {
-            return new PayFastSettings
-            {
-                MerchantId = "10004241",
-                MerchantKey = "132ncgdwrh2by",
-                PassPhrase = "salt"
-            };
-        }
-
         #endregion Methods
 
         #region Private Methods
@@ -51,7 +41,7 @@
             {
                 payfastSettings.MerchantId = "10004241";
                 payfastSettings.MerchantKey = "132ncgdwrh2by";
-                payfastSettings.PassPhrase = "salt";
+                payfastSettings.PassPhrase = "saltandepepper";
             });
 
             serviceCollection.AddPayFastIntegration();

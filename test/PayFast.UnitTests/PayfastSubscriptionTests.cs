@@ -13,7 +13,7 @@
 
         #endregion Fields
 
-        [Fact]
+        [Fact(Skip = "Skip when running under ci")]
         public async Task Can_Perform_Fetch()
         {
             // Arrange
@@ -34,7 +34,7 @@
             Assert.Equal(token, fetchResult.data.response.token);
         }
 
-        [Fact]
+        [Fact(Skip = "Skip when running under ci")]
         public async Task Can_Perform_Update()
         {
             // Arrange
@@ -61,7 +61,7 @@
             Assert.Equal(token, updateResult.data.response.token);
         }
 
-        [Fact]
+        [Fact(Skip = "Skip when running under ci")]
         public async Task Can_Perform_Pause_For_OneCycle()
         {
             // Arrange
@@ -78,7 +78,7 @@
             Assert.Equal("true", updateResult.data.response);
         }
 
-        [Fact]
+        [Fact(Skip = "Skip when running under ci")]
         public async Task Can_Perform_UnPause()
         {
             // Arrange
@@ -95,7 +95,7 @@
             Assert.Equal("true", updateResult.data.response);
         }
 
-        [Fact]
+        [Fact(Skip = "Skip when running under ci")]
         public async Task Can_Perform_Pause_For_Cycles()
         {
             // Arrange
@@ -113,7 +113,7 @@
             Assert.Equal("true", updateResult.data.response);
         }
 
-        [Fact]
+        [Fact(Skip = "Skip when running under ci")]
         public async Task Can_Perform_Cancel()
         {
             // Arrange

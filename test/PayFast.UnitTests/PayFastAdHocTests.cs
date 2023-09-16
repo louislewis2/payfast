@@ -14,7 +14,7 @@
 
         #region Methods
 
-        [Fact]
+        [Fact(Skip = "Skip when running under ci")]
         public async Task Can_Perform_Fetch()
         {
             // Arrange
@@ -29,7 +29,7 @@
             Assert.Equal(ResultStatus.Active, fetchResult.data.response.status);
         }
 
-        [Fact]
+        [Fact(Skip = "Skip when running under ci")]
         public async Task Can_Perform_Charge()
         {
             // Arrange
@@ -45,7 +45,7 @@
             Assert.Equal("true", chargeResult.data.response);
         }
 
-        [Fact]
+        [Fact(Skip = "Skip when running under ci")]
         public async Task Can_Perform_Cancel()
         {
             // Arrange
