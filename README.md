@@ -36,7 +36,7 @@ and more will get added in future releases.
 
 > Install-Package PayFast.AspNetCore
 
-The latest version is 2.0.0.
+The latest version is 2.0.0-beta1
 
 # Supported Runtimes
 
