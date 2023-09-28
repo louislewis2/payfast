@@ -1,14 +1,14 @@
 ﻿namespace PayFast.UnitTests
 {
     using System.Threading.Tasks;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-    using Xunit;
-
+    [TestClass]
     public class PingTests : TestBase
     {
         #region Methods
 
-        [Fact]
+        [TestMethod]
         public async Task Can_Perform_Ping()
         {
             // Arrange
@@ -18,7 +18,7 @@
             var pingResult = await payFastIntegrationClient.Ping(testing: true);
 
             // Assert
-            Assert.Equal(expected: "PayFast API", actual: pingResult);
+            Assert.AreEqual(expected: "PayFast API", actual: pingResult);
         }
 
         #endregion Methods

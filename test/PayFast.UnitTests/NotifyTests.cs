@@ -1,10 +1,11 @@
 ﻿namespace PayFast.UnitTests
 {
-    using Xunit;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    [TestClass]
     public class NotifyTests
     {
-        [Fact]
+        [TestMethod]
         public void Can_Verify_Signature_With_Passphrase()
         {
             // Arrange
@@ -43,10 +44,10 @@
             var calculatedSignature = notifyViewModel.GetCalculatedSignature();
 
             // Assert
-            Assert.Equal(notifyViewModel.signature, calculatedSignature);
+            Assert.AreEqual(notifyViewModel.signature, calculatedSignature);
         }
 
-        [Fact]
+        [TestMethod]
         public void Can_Verify_Signature_Without_Passphrase()
         {
             // Arrange
@@ -81,10 +82,10 @@
             var calculatedSignature = notifyViewModel.GetCalculatedSignature();
 
             // Assert
-            Assert.Equal(notifyViewModel.signature, calculatedSignature);
+            Assert.AreEqual(notifyViewModel.signature, calculatedSignature);
         }
 
-        [Fact]
+        [TestMethod]
         public void Can_Verify_Charge_Signature_With_Passphrase()
         {
             // Arrange
@@ -121,7 +122,7 @@
             var calculatedSignature = notifyViewModel.GetCalculatedSignature();
 
             // Assert
-            Assert.Equal(notifyViewModel.signature, calculatedSignature);
+            Assert.AreEqual(notifyViewModel.signature, calculatedSignature);
         }
     }
 }

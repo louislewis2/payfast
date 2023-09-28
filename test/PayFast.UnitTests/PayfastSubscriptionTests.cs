@@ -2,9 +2,9 @@
 {
     using System;
     using System.Threading.Tasks;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-    using Xunit;
-
+    [TestClass]
     public class PayfastSubscriptionTests : TestBase
     {
         #region Fields
@@ -13,7 +13,7 @@
 
         #endregion Fields
 
-        [Fact(Skip = "Skip when running under ci")]
+        [TestMethod]
         public async Task Can_Perform_Fetch()
         {
             // Arrange
@@ -23,18 +23,18 @@
             var fetchResult = await payFastIntegrationClient.Fetch(token: token, testing: true);
 
             // Assert
-            Assert.Equal("200", fetchResult.code);
-            Assert.Equal("success", fetchResult.status);
-            Assert.Equal(758655, fetchResult.data.response.amount);
-            Assert.Equal(0, fetchResult.data.response.cycles);
-            Assert.Equal(1, fetchResult.data.response.cycles_complete);
-            Assert.Equal(BillingFrequency.Annual, fetchResult.data.response.frequency);
-            Assert.Equal(DateTime.Parse("2024-07-28T00:00:00+02:00"), fetchResult.data.response.run_date);
-            Assert.Equal(ResultStatus.Active, fetchResult.data.response.status);
-            Assert.Equal(token, fetchResult.data.response.token);
+            Assert.AreEqual("200", fetchResult.code);
+            Assert.AreEqual("success", fetchResult.status);
+            Assert.AreEqual(3000, fetchResult.data.response.amount);
+            Assert.AreEqual(3, fetchResult.data.response.cycles);
+            Assert.AreEqual(1, fetchResult.data.response.cycles_complete);
+            Assert.AreEqual(BillingFrequency.Annual, fetchResult.data.response.frequency);
+            Assert.AreEqual(DateTime.Parse("2024-07-28T00:00:00+02:00"), fetchResult.data.response.run_date);
+            Assert.AreEqual(ResultStatus.Active, fetchResult.data.response.status);
+            Assert.AreEqual(token, fetchResult.data.response.token);
         }
 
-        [Fact(Skip = "Skip when running under ci")]
+        [TestMethod]
         public async Task Can_Perform_Update()
         {
             // Arrange
@@ -50,18 +50,18 @@
                 testing: true);
 
             // Assert
-            Assert.Equal("200", updateResult.code);
-            Assert.Equal("success", updateResult.status);
-            Assert.Equal(3000, updateResult.data.response.amount);
-            Assert.Equal(3, updateResult.data.response.cycles);
-            Assert.Equal(0, updateResult.data.response.cycles_complete);
-            Assert.Equal(BillingFrequency.Biannual, updateResult.data.response.frequency);
-            Assert.Equal(DateTime.Parse("2024-10-28T00:00:00+02:00"), updateResult.data.response.run_date);
-            Assert.Equal(ResultStatus.Active, updateResult.data.response.status);
-            Assert.Equal(token, updateResult.data.response.token);
+            Assert.AreEqual("200", updateResult.code);
+            Assert.AreEqual("success", updateResult.status);
+            Assert.AreEqual(3000, updateResult.data.response.amount);
+            Assert.AreEqual(3, updateResult.data.response.cycles);
+            Assert.AreEqual(0, updateResult.data.response.cycles_complete);
+            Assert.AreEqual(BillingFrequency.Biannual, updateResult.data.response.frequency);
+            Assert.AreEqual(DateTime.Parse("2024-10-28T00:00:00+02:00"), updateResult.data.response.run_date);
+            Assert.AreEqual(ResultStatus.Active, updateResult.data.response.status);
+            Assert.AreEqual(token, updateResult.data.response.token);
         }
 
-        [Fact(Skip = "Skip when running under ci")]
+        [TestMethod]
         public async Task Can_Perform_Pause_For_OneCycle()
         {
             // Arrange
@@ -73,12 +73,12 @@
                 testing: true);
 
             // Assert
-            Assert.Equal("200", updateResult.code);
-            Assert.Equal("success", updateResult.status);
-            Assert.Equal("true", updateResult.data.response);
+            Assert.AreEqual("200", updateResult.code);
+            Assert.AreEqual("success", updateResult.status);
+            Assert.AreEqual("true", updateResult.data.response);
         }
 
-        [Fact(Skip = "Skip when running under ci")]
+        [TestMethod]
         public async Task Can_Perform_UnPause()
         {
             // Arrange
@@ -90,12 +90,12 @@
                 testing: true);
 
             // Assert
-            Assert.Equal("200", updateResult.code);
-            Assert.Equal("success", updateResult.status);
-            Assert.Equal("true", updateResult.data.response);
+            Assert.AreEqual("200", updateResult.code);
+            Assert.AreEqual("success", updateResult.status);
+            Assert.AreEqual("true", updateResult.data.response);
         }
 
-        [Fact(Skip = "Skip when running under ci")]
+        [TestMethod]
         public async Task Can_Perform_Pause_For_Cycles()
         {
             // Arrange
@@ -108,12 +108,12 @@
                 testing: true);
 
             // Assert
-            Assert.Equal("200", updateResult.code);
-            Assert.Equal("success", updateResult.status);
-            Assert.Equal("true", updateResult.data.response);
+            Assert.AreEqual("200", updateResult.code);
+            Assert.AreEqual("success", updateResult.status);
+            Assert.AreEqual("true", updateResult.data.response);
         }
 
-        [Fact(Skip = "Skip when running under ci")]
+        [TestMethod]
         public async Task Can_Perform_Cancel()
         {
             // Arrange
@@ -123,10 +123,10 @@
             var cancelResult = await payFastIntegrationClient.Cancel(token: token, testing: true);
 
             // Assert
-            Assert.Equal("200", cancelResult.code);
-            Assert.Equal("success", cancelResult.status);
-            Assert.Equal("true", cancelResult.data.response);
-            Assert.Equal("Success", cancelResult.data.message);
+            Assert.AreEqual("200", cancelResult.code);
+            Assert.AreEqual("success", cancelResult.status);
+            Assert.AreEqual("true", cancelResult.data.response);
+            Assert.AreEqual("Success", cancelResult.data.message);
         }
     }
 }

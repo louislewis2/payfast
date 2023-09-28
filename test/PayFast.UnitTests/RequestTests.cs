@@ -1,12 +1,12 @@
 ﻿namespace PayFast.UnitTests
 {
     using System;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-    using Xunit;
-
+    [TestClass]
     public class RequestTests
     {
-        [Fact]
+        [TestMethod]
         public void Can_Handle_Defaults()
         {
             // Arrange
@@ -17,10 +17,10 @@
             var queryString = payFastViewModel.ToString();
 
             // Assert
-            Assert.Equal(defaultStringContent, queryString);
+            Assert.AreEqual(defaultStringContent, queryString);
         }
 
-        [Fact]
+        [TestMethod]
         public void Can_Generate_Correct_Signature_With_Passphrase()
         {
             // Arrange
@@ -58,10 +58,10 @@
             var signature = payFastViewModel.signature;
 
             // Assert
-            Assert.Equal("e11880438cdc68addba56f65d80d27a6", signature);
+            Assert.AreEqual("e11880438cdc68addba56f65d80d27a6", signature);
         }
 
-        [Fact]
+        [TestMethod]
         public void Can_Generate_Correct_Signature_Without_Passphrase_Recurring_Billing()
         {
             // Arrange
@@ -98,10 +98,10 @@
             var signature = payFastViewModel.signature;
 
             // Assert
-            Assert.Equal("8f36f2e6fc5d98e1fc609f4ba46db5c0", signature);
+            Assert.AreEqual("8f36f2e6fc5d98e1fc609f4ba46db5c0", signature);
         }
 
-        [Fact]
+        [TestMethod]
         public void Can_Generate_Correct_Signature_Without_Passphrase_Once_Off()
         {
             // Arrange
@@ -131,7 +131,7 @@
             var signature = onceOffRequest.signature;
 
             // Assert
-            Assert.Equal("66d25171083fa3e36ff3ebaa3c7f0713", signature);
+            Assert.AreEqual("66d25171083fa3e36ff3ebaa3c7f0713", signature);
         }
     }
 }

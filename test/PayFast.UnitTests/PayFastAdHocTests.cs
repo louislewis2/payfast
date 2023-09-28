@@ -1,9 +1,9 @@
 ﻿namespace PayFast.UnitTests
 {
     using System.Threading.Tasks;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-    using Xunit;
-
+    [TestClass]
     public class PayFastAdHocTests : TestBase
     {
         #region Fields
@@ -14,7 +14,7 @@
 
         #region Methods
 
-        [Fact(Skip = "Skip when running under ci")]
+        [TestMethod]
         public async Task Can_Perform_Fetch()
         {
             // Arrange
@@ -24,12 +24,12 @@
             var fetchResult = await payFastIntegrationClient.Fetch(token: token, testing: true);
 
             // Assert
-            Assert.Equal("200", fetchResult.code);
-            Assert.Equal("success", fetchResult.status);
-            Assert.Equal(ResultStatus.Active, fetchResult.data.response.status);
+            Assert.AreEqual("200", fetchResult.code);
+            Assert.AreEqual("success", fetchResult.status);
+            Assert.AreEqual(ResultStatus.Active, fetchResult.data.response.status);
         }
 
-        [Fact(Skip = "Skip when running under ci")]
+        [TestMethod]
         public async Task Can_Perform_Charge()
         {
             // Arrange
@@ -39,13 +39,13 @@
             var chargeResult = await payFastIntegrationClient.Charge(token: token, amount: 5000, item_name: "test item", testing: true);
 
             // Assert
-            Assert.Equal("200", chargeResult.code);
-            Assert.Equal("success", chargeResult.status);
-            Assert.Equal("Success", chargeResult.data.message);
-            Assert.Equal("true", chargeResult.data.response);
+            Assert.AreEqual("200", chargeResult.code);
+            Assert.AreEqual("success", chargeResult.status);
+            Assert.AreEqual("Success", chargeResult.data.message);
+            Assert.AreEqual("true", chargeResult.data.response);
         }
 
-        [Fact(Skip = "Skip when running under ci")]
+        [TestMethod]
         public async Task Can_Perform_Cancel()
         {
             // Arrange
@@ -55,10 +55,10 @@
             var cancelResult = await payFastIntegrationClient.Cancel(token: token, testing: true);
 
             // Assert
-            Assert.Equal("200", cancelResult.code);
-            Assert.Equal("success", cancelResult.status);
-            Assert.Equal("true", cancelResult.data.response);
-            Assert.Equal("Success", cancelResult.data.message);
+            Assert.AreEqual("200", cancelResult.code);
+            Assert.AreEqual("success", cancelResult.status);
+            Assert.AreEqual("true", cancelResult.data.response);
+            Assert.AreEqual("Success", cancelResult.data.message);
         }
 
         #endregion Methods

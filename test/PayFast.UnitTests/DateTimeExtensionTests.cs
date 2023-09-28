@@ -1,12 +1,12 @@
 ﻿namespace PayFast.UnitTests
 {
     using System;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-    using Xunit;
-
+    [TestClass]
     public class DateTimeExtensionTests
     {
-        [Fact]
+        [TestMethod]
         public void Can_Return_Correct_Date_String()
         {
             // Arrange
@@ -16,7 +16,7 @@
             var dateString = date.ToPayFastDate();
 
             // Assert
-            Assert.Equal("2017-02-13", dateString);
+            Assert.AreEqual("2017-02-13", dateString);
         }
     }
 }
