@@ -5,7 +5,7 @@
     [TestClass]
     public class NotifyTests
     {
-        [TestMethod]
+        [TestMethod, TestCategory(testCategory: "RunAlways")]
         public void Can_Verify_Signature_With_Passphrase()
         {
             // Arrange
@@ -20,7 +20,6 @@
             notifyViewModel.amount_gross = "20.00";
             notifyViewModel.amount_fee = "-2.30";
             notifyViewModel.amount_net = "17.70";
-
             notifyViewModel.custom_str1 = string.Empty;
             notifyViewModel.custom_str2 = string.Empty;
             notifyViewModel.custom_str3 = string.Empty;
@@ -33,7 +32,6 @@
             notifyViewModel.custom_int5 = string.Empty;
             notifyViewModel.name_first  = string.Empty;
             notifyViewModel.name_last   = string.Empty;
-
             notifyViewModel.email_address = "sbtu01@payfast.co.za";
             notifyViewModel.merchant_id = "10004241";
             notifyViewModel.token = "5a538bc0-ce28-47d4-98bd-9ee7bc11ad56";
@@ -47,7 +45,7 @@
             Assert.AreEqual(notifyViewModel.signature, calculatedSignature);
         }
 
-        [TestMethod]
+        [TestMethod, TestCategory(testCategory: "RunAlways")]
         public void Can_Verify_Signature_Without_Passphrase()
         {
             // Arrange
@@ -60,7 +58,6 @@
             notifyViewModel.amount_gross = "30.00";
             notifyViewModel.amount_fee = "-2.30";
             notifyViewModel.amount_net = "27.70";
-
             notifyViewModel.custom_str1 = string.Empty;
             notifyViewModel.custom_str2 = string.Empty;
             notifyViewModel.custom_str3 = string.Empty;
@@ -73,7 +70,6 @@
             notifyViewModel.custom_int5 = string.Empty;
             notifyViewModel.name_first = string.Empty;
             notifyViewModel.name_last = string.Empty;
-
             notifyViewModel.email_address = "sbtu01@payfast.co.za";
             notifyViewModel.merchant_id = "10004241";
             notifyViewModel.signature = "94ea076d95918eb0661f37ecbf206552";
@@ -85,7 +81,7 @@
             Assert.AreEqual(notifyViewModel.signature, calculatedSignature);
         }
 
-        [TestMethod]
+        [TestMethod, TestCategory(testCategory: "RunAlways")]
         public void Can_Verify_Charge_Signature_With_Passphrase()
         {
             // Arrange
@@ -116,7 +112,6 @@
             notifyViewModel.merchant_id = "10004241";
             
             notifyViewModel.signature = "c629a4b9c9df461a29db663ec0a77ae7";
-            
 
             // Act
             var calculatedSignature = notifyViewModel.GetCalculatedSignature();

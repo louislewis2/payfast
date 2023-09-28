@@ -6,7 +6,7 @@
     [TestClass]
     public class DateTimeExtensionTests
     {
-        [TestMethod]
+        [TestMethod, TestCategory(testCategory: "RunAlways")]
         public void Can_Return_Correct_Date_String()
         {
             // Arrange

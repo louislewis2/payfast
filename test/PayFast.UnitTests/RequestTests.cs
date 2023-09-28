@@ -6,7 +6,7 @@
     [TestClass]
     public class RequestTests
     {
-        [TestMethod]
+        [TestMethod, TestCategory(testCategory: "RunAlways")]
         public void Can_Handle_Defaults()
         {
             // Arrange
@@ -20,7 +20,7 @@
             Assert.AreEqual(defaultStringContent, queryString);
         }
 
-        [TestMethod]
+        [TestMethod, TestCategory(testCategory: "RunAlways")]
         public void Can_Generate_Correct_Signature_With_Passphrase()
         {
             // Arrange
@@ -61,7 +61,7 @@
             Assert.AreEqual("e11880438cdc68addba56f65d80d27a6", signature);
         }
 
-        [TestMethod]
+        [TestMethod, TestCategory(testCategory: "RunAlways")]
         public void Can_Generate_Correct_Signature_Without_Passphrase_Recurring_Billing()
         {
             // Arrange
@@ -101,7 +101,7 @@
             Assert.AreEqual("8f36f2e6fc5d98e1fc609f4ba46db5c0", signature);
         }
 
-        [TestMethod]
+        [TestMethod, TestCategory(testCategory: "RunAlways")]
         public void Can_Generate_Correct_Signature_Without_Passphrase_Once_Off()
         {
             // Arrange
