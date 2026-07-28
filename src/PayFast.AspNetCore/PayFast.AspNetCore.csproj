@@ -2,7 +2,7 @@
 
 <PropertyGroup>
 	<Description>PayFast Integration Library For Asp.Net Core</Description>
-	<VersionPrefix>2.0.0</VersionPrefix>
+	<VersionPrefix>2.9.0</VersionPrefix>
 	<Authors>Louis Lewis</Authors>
 	<AssemblyName>PayFast.AspNetCore</AssemblyName>
 	<PackageId>PayFast.AspNetCore</PackageId>
@@ -10,8 +10,8 @@
 	<PackageLicenseUrl>https://github.com/louislewis2/payfast/blob/master/License.md</PackageLicenseUrl>
 	<RepositoryType>git</RepositoryType>
 	<RepositoryUrl>https://github.com/louislewis2/payfast</RepositoryUrl>
-	<TargetFramework>net6.0</TargetFramework>
-	<PackageReleaseNotes>Update to .Net 6</PackageReleaseNotes>
+	<TargetFramework>net9.0</TargetFramework>
+	<PackageReleaseNotes>Update to .Net 9</PackageReleaseNotes>
 	<PackageProjectUrl>https://github.com/louislewis2/payfast</PackageProjectUrl>
 </PropertyGroup>
 

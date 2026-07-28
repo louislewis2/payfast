@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <AssemblyName>PayFast.Web.Core</AssemblyName>
     <UserSecretsId>3655be34-63da-47ba-bf5a-41bf467d2a08</UserSecretsId>
   </PropertyGroup>

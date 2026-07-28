@@ -20,6 +20,12 @@ The status and code variables can be used to check this.
 I am in the process of adding xml documentation for all types and methods. This is a process,
 and more will get added in future releases.
 
+# Extensability
+
+Since version 2.0.0, the library has been refactored to allow for extensibility without having to modify the core library.
+All current functionality is implemented as extension methods against the PayFastIntegrationClient. You can see examples in the 
+folder called Handlers.
+
 # Live Samples
 
 * [Asp.Net](http://payfast-demo.azurewebsites.net/)
@@ -36,11 +42,11 @@ and more will get added in future releases.
 
 > Install-Package PayFast.AspNetCore
 
-The latest version is 2.0.0-beta1
+The latest version is 2.9.0
 
 # Supported Runtimes
 
-* .Net 6.0
+* .Net 9.0
 
 # Supported Request Types
 
